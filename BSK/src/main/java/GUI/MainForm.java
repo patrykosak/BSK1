@@ -5,6 +5,8 @@
  */
 package GUI;
 
+import ciphers.RailFence;
+
 /**
  *
  * @author xxx
@@ -67,6 +69,7 @@ public class MainForm extends javax.swing.JFrame {
 
         jLabel2.setText("Rail fence");
 
+        JRailFenceNTextField.setText("2");
         JRailFenceNTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 JRailFenceNTextFieldActionPerformed(evt);
@@ -172,14 +175,15 @@ public class MainForm extends javax.swing.JFrame {
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
 
         String word = JWordTextField.getText();
-        int n = Integer.parseInt(JRailFenceNTextField.getText());
+        int n = 2;
+        if(!JRailFenceNTextField.getText().equals(""))
+            n = Integer.parseInt(JRailFenceNTextField.getText());
+        
         if(JTypeComboBox.getSelectedItem().equals("Szyfracja")){
-            
-            
-            JRailFenceScoreTextField.setText("");
+            JRailFenceScoreTextField.setText(RailFence.encode(word, n));
         }
         else{
-            JRailFenceScoreTextField.setText("");
+            JRailFenceScoreTextField.setText(RailFence.decode(word, n));
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 
