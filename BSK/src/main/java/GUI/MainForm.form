@@ -57,8 +57,8 @@
                               <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                               <Component id="jButton2" min="-2" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="WordTextField" max="32767" attributes="0"/>
-                                  <Component id="jComboBox1" min="-2" pref="98" max="-2" attributes="0"/>
+                                  <Component id="JWordTextField" max="32767" attributes="0"/>
+                                  <Component id="JTypeComboBox" min="-2" pref="98" max="-2" attributes="0"/>
                                   <Component id="jLabel1" alignment="0" pref="363" max="32767" attributes="0"/>
                               </Group>
                           </Group>
@@ -67,14 +67,14 @@
                           <EmptySpace min="-2" pref="156" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Component id="jLabel3" max="32767" attributes="0"/>
-                              <Component id="RailFenceNTextField" max="32767" attributes="0"/>
+                              <Component id="JRailFenceNTextField" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
                   <EmptySpace pref="148" max="32767" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jLabel4" min="-2" pref="93" max="-2" attributes="0"/>
-                      <Component id="RailFenceNTextField1" min="-2" pref="177" max="-2" attributes="0"/>
+                      <Component id="JRailFenceScoreTextField" min="-2" pref="177" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="54" max="-2" attributes="0"/>
               </Group>
@@ -84,11 +84,11 @@
           <Group type="103" groupAlignment="0" attributes="0">
               <Group type="102" alignment="0" attributes="0">
                   <EmptySpace min="-2" pref="26" max="-2" attributes="0"/>
-                  <Component id="jComboBox1" min="-2" pref="34" max="-2" attributes="0"/>
+                  <Component id="JTypeComboBox" min="-2" pref="34" max="-2" attributes="0"/>
                   <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
                   <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="WordTextField" min="-2" pref="43" max="-2" attributes="0"/>
+                  <Component id="JWordTextField" min="-2" pref="43" max="-2" attributes="0"/>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" attributes="0">
@@ -97,12 +97,12 @@
                               <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="RailFenceNTextField" min="-2" max="-2" attributes="0"/>
+                          <Component id="JRailFenceNTextField" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" attributes="0">
                           <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Component id="RailFenceNTextField1" min="-2" max="-2" attributes="0"/>
+                          <Component id="JRailFenceScoreTextField" min="-2" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace pref="268" max="32767" attributes="0"/>
@@ -113,7 +113,7 @@
         </DimensionLayout>
       </Layout>
       <SubComponents>
-        <Component class="javax.swing.JComboBox" name="jComboBox1">
+        <Component class="javax.swing.JComboBox" name="JTypeComboBox">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="2">
@@ -123,15 +123,15 @@
             </Property>
           </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jComboBox1ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JTypeComboBoxActionPerformed"/>
           </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
           </AuxValues>
         </Component>
-        <Component class="javax.swing.JTextField" name="WordTextField">
+        <Component class="javax.swing.JTextField" name="JWordTextField">
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="WordTextFieldActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JWordTextFieldActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel1">
@@ -143,15 +143,18 @@
           <Properties>
             <Property name="text" type="java.lang.String" value="Sprawd&#x17a; wyniki"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton2ActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel2">
           <Properties>
             <Property name="text" type="java.lang.String" value="Rail fence"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="RailFenceNTextField">
+        <Component class="javax.swing.JTextField" name="JRailFenceNTextField">
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="RailFenceNTextFieldActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JRailFenceNTextFieldActionPerformed"/>
           </Events>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel3">
@@ -164,9 +167,9 @@
             <Property name="text" type="java.lang.String" value="Wynik"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="RailFenceNTextField1">
+        <Component class="javax.swing.JTextField" name="JRailFenceScoreTextField">
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="RailFenceNTextField1ActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JRailFenceScoreTextFieldActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>
