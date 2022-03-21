@@ -10,77 +10,67 @@ package ciphers;
  */
 public class TranspositionMatrixA {
     
-    public static String encode (String word) {
-		int n = word.length();
-		int d = 5;                  //liczba kolumn
-		int rows = ((n-1)/d)+1;     //zapewnienie odpowiedniej liczby wierszy
-		int tab[] = {3,4,1,5,2};    //klucz do szyfracji
-		for (int i=0; i<tab.length;i++) {   
-			tab[i]--;           //zmniejszenie klucza o 1 do lepszego indeksowanie
-		}
-		int dl = n;
-		while((dl%d)!=0) {      //dopelnienie slowa spacjami do wielokrotnosci d
-			word+=" ";
-			dl++;
-		}
-		char[][] t_matrix = new char[rows][d];  //inicjalizacja tablicy wypelnionej slowem
-		for (int i=0; i<rows; i++) {
-			for (int j=0; j<d; j++) {
-				t_matrix[i][j] = word.charAt(i*d+j);    //wpisywanie slowa do tablicy
-			}
-		}
-		String result = "";
-		char[][] result_matrix = new char[rows][d]; //inicjalizacja tablicy z zaszyfrowanym slowem
-		for (int i=0; i<rows; i++) {
-			for (int j=0; j<d; j++) {
-				result_matrix[i][tab[j]] = t_matrix[i][j];  //wypelnienie tablicy zaszyfrowanej
-			}
+       public static String encode(String word, Integer [] key) {
+           
+        int d = key.length;
+        char[][] matrix = new char[word.length()/d + 1][d];
+        int iterator = 0;
 
-		}
-		for (int i=0; i<rows; i++) {
-			for (int j=0; j<d; j++) {
-				result+=result_matrix[i][j];    //odczytywanie slowa
-			}
-		}
-		String encoded_word;
-		encoded_word = result.replaceAll(" ","");   //usuwanie spacji
-		return encoded_word;
-	}
-    
-	public static String decode (String word) {
-		int n = word.length();
-		int d = 5;                  //liczba kolumn
-		int rows = ((n-1)/d)+1;     //zapewnienie odpowiedniej liczby wierszy
-		int tab[] = {3,5,1,2,4};    //klucz do deszyfracji
-		for (int i=0; i<tab.length;i++) {
-			tab[i]--;            //zmniejszenie klucza o 1 do lepszego indeksowanie
-		}
-		int dl = n;
-		while((dl%d)!=0) {          //dopelnienie slowa spacjami do wielokrotnosci d
-			word+=" ";
-			dl++;
-		}
-		char[][] t_matrix = new char[rows][d];      //inicjalizacja tablicy wypelnionej slowem
-		for (int i=0; i<rows; i++) {
-			for (int j=0; j<d; j++) {
-				t_matrix[i][j] = word.charAt(i*d+j);   //wpisywanie slowa do tablicy
-			}
-		}
-		String result = "";
-		char[][] result_matrix = new char[rows][d];     //inicjalizacja tablicy z odszyfrowanym slowem
-		for (int i=0; i<rows; i++) {
-			for (int j=0; j<d; j++) {
-				result_matrix[i][tab[j]] = t_matrix[i][j];  //wypelnienie tablicy odszyfrowanej
-			}
+        // Uzupełnianie macierzy
+        for (int i = 0; i < word.length()/d+1; i++) {
+            for (int j = 0; j < d; j++) {
+                // dopisywanie zer gdy słowo się skończy
+                if (iterator >= word.length()) {
+                    matrix[i][j] = '0';
+                } else {
+                    matrix[i][j] = word.charAt(iterator);
+                }
+                iterator++;
+            }
+        }
 
-		}
-		for (int i=0; i<rows; i++) {
-			for (int j=0; j<d; j++) {
-				result+=result_matrix[i][j]; //odczytywanie slowa
-			}
-		}
-		String decoded_word;
-		decoded_word = result.replaceAll(" ","");  //usuwanie spacji
-		return decoded_word;
-	}
+        // Odczytanie zakodowanego slowa
+        String result = "";
+        for (int j = 0; j < word.length()/d + 1; j++) {
+            for (int i = 0; i < d; i++) {
+                result += matrix[j][key[i]-1];
+            }
+        }
+        result = result.replace("0", "");
+        return result;
+    }
+
+    public static String decode(String word, Integer [] key) {
+        int d = key.length;
+        char[][] matrix = new char[word.length()/d + 1][d];
+        int iterator = 0;
+
+        // obliczenie liczby pustych komórek
+        int space = ((word.length()/d + 1) * d) - word.length();
+        // uzupełnienie pustych komórek
+        for (int i = d-1; space > 0; i--) {
+            matrix[word.length()/d][i] = '0';
+            space--;
+        }
+
+        // Wpisywanie liter według klucza
+        for (int j = 0; j < word.length()/d + 1; j++) {
+            for (int i = 0; i < d; i++) {
+                if (matrix[j][key[i]-1] != '0') {
+                    matrix[j][key[i]-1] = word.charAt(iterator);
+                    iterator++;
+                }
+            }
+        }
+
+        // Oczytanie odszyfrowanej wiadomości
+        String result = "";
+        for (int j = 0; j < word.length()/d + 1; j++) {
+            for (int i = 0; i < d; i++) {
+                result += matrix[j][i];
+            }
+        }
+        result = result.replace("0", "");
+        return result;
+    }
 }

@@ -9,6 +9,7 @@ import ciphers.RailFence;
 
 import ciphers.TranspositionMatrixA;
 import ciphers.TranspositionMatrixB;
+import java.util.stream.Stream;
 
 /**
  *
@@ -58,7 +59,9 @@ public class MainForm extends javax.swing.JFrame {
         jTextFieldWord4 = new javax.swing.JTextField();
         jButton5 = new javax.swing.JButton();
         jLabel13 = new javax.swing.JLabel();
-        JTranspositionKeyTextField = new javax.swing.JTextField();
+        JTranspositionBKeyTextField = new javax.swing.JTextField();
+        jLabel14 = new javax.swing.JLabel();
+        JTranspositionAKeyTextField1 = new javax.swing.JTextField();
 
         jButton1.setText("jButton1");
 
@@ -150,6 +153,12 @@ public class MainForm extends javax.swing.JFrame {
             }
         });
 
+        jTextFieldWord4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldWord4ActionPerformed(evt);
+            }
+        });
+
         jButton5.setText("Sprawdź wynik");
         jButton5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -159,9 +168,19 @@ public class MainForm extends javax.swing.JFrame {
 
         jLabel13.setText("Klucz");
 
-        JTranspositionKeyTextField.addActionListener(new java.awt.event.ActionListener() {
+        JTranspositionBKeyTextField.setText("CONVENIENCE");
+        JTranspositionBKeyTextField.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                JTranspositionKeyTextFieldActionPerformed(evt);
+                JTranspositionBKeyTextFieldActionPerformed(evt);
+            }
+        });
+
+        jLabel14.setText("Klucz");
+
+        JTranspositionAKeyTextField1.setText("3-4-1-5-2");
+        JTranspositionAKeyTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JTranspositionAKeyTextField1ActionPerformed(evt);
             }
         });
 
@@ -204,7 +223,7 @@ public class MainForm extends javax.swing.JFrame {
                                                 .addComponent(jLabel13)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)))
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(JTranspositionKeyTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(JTranspositionBKeyTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addComponent(jTextFieldWord2)
                                     .addComponent(JWordTextField)
                                     .addComponent(JTypeComboBox, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -213,7 +232,12 @@ public class MainForm extends javax.swing.JFrame {
                                     .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel2)
                                     .addComponent(jButton2)
-                                    .addComponent(jComboBoxTranspositionA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(jPanel1Layout.createSequentialGroup()
+                                        .addComponent(jComboBoxTranspositionA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jLabel14)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(JTranspositionAKeyTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 159, javax.swing.GroupLayout.PREFERRED_SIZE))
                                     .addComponent(JRailFenceNTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addComponent(jLabel6))
                                 .addGap(42, 42, 42)
@@ -251,7 +275,11 @@ public class MainForm extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addComponent(jLabel5)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jComboBoxTranspositionA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jComboBoxTranspositionA, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel14)
+                        .addComponent(JTranspositionAKeyTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
@@ -268,7 +296,7 @@ public class MainForm extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jComboBoxTranspositionB, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel13)
-                    .addComponent(JTranspositionKeyTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(JTranspositionBKeyTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel11)
@@ -279,7 +307,7 @@ public class MainForm extends javax.swing.JFrame {
                     .addComponent(JTranspositionBScoreTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton5)
-                .addContainerGap(17, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -318,7 +346,7 @@ public class MainForm extends javax.swing.JFrame {
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
 
-        String word = JWordTextField.getText();
+        String word = JWordTextField.getText().toUpperCase();
         int n = 2;
         if(!JRailFenceNTextField.getText().equals(""))
             n = Integer.parseInt(JRailFenceNTextField.getText());
@@ -341,12 +369,17 @@ public class MainForm extends javax.swing.JFrame {
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-        String word = jTextFieldWord2.getText();
+        String word = jTextFieldWord2.getText().toUpperCase();
+        
+        String key = JTranspositionAKeyTextField1.getText();
+        String[] splitted = key.split("-");
+        Integer[] singleNumbers = Stream.of(splitted).mapToInt(Integer::parseInt).boxed().toArray(Integer[]::new);
+        
         if(jComboBoxTranspositionA.getSelectedItem().equals("Szyfracja")){
-            JTranspositionAScoreTextField.setText(TranspositionMatrixA.encode(word));
+            JTranspositionAScoreTextField.setText(TranspositionMatrixA.encode(word,singleNumbers));
         }
         else{
-            JTranspositionAScoreTextField.setText(TranspositionMatrixA.decode(word));
+            JTranspositionAScoreTextField.setText(TranspositionMatrixA.decode(word,singleNumbers));
         }
     }//GEN-LAST:event_jButton3ActionPerformed
 
@@ -359,8 +392,8 @@ public class MainForm extends javax.swing.JFrame {
     }//GEN-LAST:event_JTranspositionBScoreTextFieldActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        String word = jTextFieldWord4.getText();
-        String key = JTranspositionKeyTextField.getText();
+        String word = jTextFieldWord4.getText().toUpperCase();
+        String key = JTranspositionBKeyTextField.getText().toUpperCase();
         if(jComboBoxTranspositionB.getSelectedItem().equals("Szyfracja")){
             JTranspositionBScoreTextField.setText(TranspositionMatrixB.encode(word,key));
         }
@@ -369,9 +402,17 @@ public class MainForm extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton5ActionPerformed
 
-    private void JTranspositionKeyTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTranspositionKeyTextFieldActionPerformed
+    private void JTranspositionBKeyTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTranspositionBKeyTextFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_JTranspositionKeyTextFieldActionPerformed
+    }//GEN-LAST:event_JTranspositionBKeyTextFieldActionPerformed
+
+    private void JTranspositionAKeyTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTranspositionAKeyTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_JTranspositionAKeyTextField1ActionPerformed
+
+    private void jTextFieldWord4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldWord4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldWord4ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -411,9 +452,10 @@ public class MainForm extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField JRailFenceNTextField;
     private javax.swing.JTextField JRailFenceScoreTextField;
+    private javax.swing.JTextField JTranspositionAKeyTextField1;
     private javax.swing.JTextField JTranspositionAScoreTextField;
+    private javax.swing.JTextField JTranspositionBKeyTextField;
     private javax.swing.JTextField JTranspositionBScoreTextField;
-    private javax.swing.JTextField JTranspositionKeyTextField;
     private javax.swing.JComboBox<String> JTypeComboBox;
     private javax.swing.JTextField JWordTextField;
     private javax.swing.JButton jButton1;
@@ -427,6 +469,7 @@ public class MainForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;

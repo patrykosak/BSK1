@@ -94,7 +94,7 @@
                                               </Group>
                                           </Group>
                                           <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                          <Component id="JTranspositionKeyTextField" min="-2" pref="159" max="-2" attributes="0"/>
+                                          <Component id="JTranspositionBKeyTextField" min="-2" pref="159" max="-2" attributes="0"/>
                                       </Group>
                                       <Component id="jTextFieldWord2" max="32767" attributes="0"/>
                                       <Component id="JWordTextField" max="32767" attributes="0"/>
@@ -104,7 +104,13 @@
                                       <Component id="jLabel5" min="-2" pref="164" max="-2" attributes="0"/>
                                       <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                                       <Component id="jButton2" min="-2" max="-2" attributes="0"/>
-                                      <Component id="jComboBoxTranspositionA" alignment="0" min="-2" max="-2" attributes="0"/>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <Component id="jComboBoxTranspositionA" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace max="32767" attributes="0"/>
+                                          <Component id="jLabel14" min="-2" max="-2" attributes="0"/>
+                                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                                          <Component id="JTranspositionAKeyTextField1" min="-2" pref="159" max="-2" attributes="0"/>
+                                      </Group>
                                       <Component id="JRailFenceNTextField" min="-2" pref="107" max="-2" attributes="0"/>
                                       <Component id="jLabel6" alignment="0" min="-2" max="-2" attributes="0"/>
                                   </Group>
@@ -154,7 +160,13 @@
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Component id="jLabel5" min="-2" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="jComboBoxTranspositionA" min="-2" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="3" attributes="0">
+                      <Component id="jComboBoxTranspositionA" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Group type="103" alignment="3" groupAlignment="3" attributes="0">
+                          <Component id="jLabel14" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="JTranspositionAKeyTextField1" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jLabel6" alignment="3" min="-2" max="-2" attributes="0"/>
@@ -173,7 +185,7 @@
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jComboBoxTranspositionB" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel13" alignment="3" min="-2" max="-2" attributes="0"/>
-                      <Component id="JTranspositionKeyTextField" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
+                      <Component id="JTranspositionBKeyTextField" alignment="3" min="-2" pref="33" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -187,7 +199,7 @@
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="jButton5" min="-2" max="-2" attributes="0"/>
-                  <EmptySpace pref="17" max="32767" attributes="0"/>
+                  <EmptySpace max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -338,6 +350,9 @@
           </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="jTextFieldWord4">
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jTextFieldWord4ActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="jButton5">
           <Properties>
@@ -352,9 +367,25 @@
             <Property name="text" type="java.lang.String" value="Klucz"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="JTranspositionKeyTextField">
+        <Component class="javax.swing.JTextField" name="JTranspositionBKeyTextField">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="CONVENIENCE"/>
+          </Properties>
           <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JTranspositionKeyTextFieldActionPerformed"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JTranspositionBKeyTextFieldActionPerformed"/>
+          </Events>
+        </Component>
+        <Component class="javax.swing.JLabel" name="jLabel14">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="Klucz"/>
+          </Properties>
+        </Component>
+        <Component class="javax.swing.JTextField" name="JTranspositionAKeyTextField1">
+          <Properties>
+            <Property name="text" type="java.lang.String" value="3-4-1-5-2"/>
+          </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="JTranspositionAKeyTextField1ActionPerformed"/>
           </Events>
         </Component>
       </SubComponents>

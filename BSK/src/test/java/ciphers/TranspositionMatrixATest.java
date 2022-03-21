@@ -15,51 +15,51 @@ import static org.junit.jupiter.api.Assertions.*;
  * @author xxx
  */
 public class TranspositionMatrixATest {
-    
+    Integer [] key = new Integer[]{3,4,1,5,2};
     public TranspositionMatrixATest() {
     }
     
     @Test
     public void testEncode() {
-        String result = TranspositionMatrixA.encode("DALMATYNCZYK");
+        String result = TranspositionMatrixA.encode("DALMATYNCZYK",key);
          assertEquals(result,"LMDAANCTZYYK");
     }
 
     @Test
     public void testDecode() {
-        String result = TranspositionMatrixA.decode("LMDAANCTZYYK");
+        String result = TranspositionMatrixA.decode("LMDAANCTZYYK",key);
          assertEquals(result,"DALMATYNCZYK");
     }
     
         @Test
     public void testMatrixA() {
         String plainText = "THEGLOVESPROTECTMYFEETFROMEXCESSWORK";
-        String testCipherText = TranspositionMatrixA.encode(plainText);
-        String testPlainText = TranspositionMatrixA.decode(testCipherText);
+        String testCipherText = TranspositionMatrixA.encode(plainText,key);
+        String testPlainText = TranspositionMatrixA.decode(testCipherText,key);
             assertEquals(plainText,testPlainText);
     }
     
         @Test
     public void testEncode1() {
-        String result = TranspositionMatrixA.encode("LABRADOR");
+        String result = TranspositionMatrixA.encode("LABRADOR",key);
             assertEquals(result,"BRLAARDO");
     }
 
     @Test
     public void testDecode1() {
-        String result = TranspositionMatrixA.decode("BRLAARDO");
+        String result = TranspositionMatrixA.decode("BRLAARDO",key);
         assertEquals(result,"LABRADOR");
     }
     
         @Test
     public void testEncode2() {
-        String result = TranspositionMatrixA.encode("OWCZAREKNIEMIECKI");
+        String result = TranspositionMatrixA.encode("OWCZAREKNIEMIECKI",key);
          assertEquals(result,"CZOAWKNRIEIEECMKI");
     }
 
     @Test
     public void testDecode2() {
-        String result = TranspositionMatrixA.decode("CZOAWKNRIEIEECMKI");
+        String result = TranspositionMatrixA.decode("CZOAWKNRIEIEECMKI",key);
          assertEquals(result,"OWCZAREKNIEMIECKI");
     }    
 }
