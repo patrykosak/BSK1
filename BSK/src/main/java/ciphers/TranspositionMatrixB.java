@@ -10,6 +10,8 @@ public class TranspositionMatrixB {
         int rows = message.length() / keyword.length() + 1;
         char[][] matrix = new char[rows][keyword.length()];
         char[] messageToEncode = message.toCharArray();
+
+        //Tworzenie tablicy z wiadomością
         int idx = 0;
         for (int row = 0; row < rows; row++) {
             if (messageToEncode.length == idx)
@@ -22,6 +24,7 @@ public class TranspositionMatrixB {
             }
         }
 
+        //Kodowanie wiadomości
         int key[] = TranspositionMatrixB.getKey(keyword);
         for (int i = 1; i <= keyword.length(); i++) {
             for (int col = 0; col < keyword.length(); col++) {
@@ -40,12 +43,15 @@ public class TranspositionMatrixB {
 
     public static String decode(String message, String keyword) {
 
+        //Przygotowanie danych
         String[] strings = message.split(" ");
         message = message.replaceAll(" ", "");
         int rows = message.length() / keyword.length() + 1;
         char[][] matrix = new char[rows][keyword.length()];
         char[] messageToDecode = message.toCharArray();
 
+
+        //Dekodowanie wiadomości
         int key[] = TranspositionMatrixB.getKey(keyword);
         for(int keyNumber = 0; keyNumber < key.length; keyNumber++) {
             char [] chunk = strings[key[keyNumber]-1].toCharArray();
@@ -55,6 +61,7 @@ public class TranspositionMatrixB {
                     break;
             }
         }
+        //Odczytanie wiadomości
         String clearMessage = "";
         for (int row = 0; row < rows; row++) {
             for (int col = 0; col < keyword.length(); col++) {
@@ -65,6 +72,8 @@ public class TranspositionMatrixB {
         return clearMessage;
     }
 
+    // Metoda zwraca klucz w postaci tablicy liczb na podstawie danego słowa kluczowego
+    // (każdej literze przypisuje liczbę na podstawie jej kodu ASCII oraz jej pozycji w słowie
     private static int[] getKey (String keyword){
         char[] keyChars = keyword.toCharArray();
         char[] tempKeyChars = keyChars.clone();
