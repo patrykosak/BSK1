@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="7" failures="0" name="ciphers.RailFenceTest" time="0.028" errors="0" skipped="0">
+<testsuite tests="7" failures="6" name="ciphers.TranspositionMatrixATest" time="0.038" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk1.8.0_261\jre\bin"/>
@@ -15,7 +15,7 @@
     <property name="user.country" value="PL"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="sun.os.patch.level" value=""/>
-    <property name="test" value="ciphers.RailFenceTest"/>
+    <property name="test" value="ciphers.TranspositionMatrixATest"/>
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
     <property name="user.dir" value="C:\Users\xxx\Documents\NetBeansProjects\JavaApplication1\BSK"/>
     <property name="java.runtime.version" value="1.8.0_261-b12"/>
@@ -48,7 +48,7 @@
     <property name="java.vm.specification.version" value="1.8"/>
     <property name="sun.arch.data.model" value="64"/>
     <property name="java.home" value="C:\Program Files\Java\jdk1.8.0_261\jre"/>
-    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher -Dtest=ciphers.RailFenceTest -Dmaven.ext.class.path=C:\Program Files\NetBeans-12.0\netbeans\java\maven-nblib\netbeans-eventspy.jar -Dfile.encoding=UTF-8 surefire:test"/>
+    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher -Dtest=ciphers.TranspositionMatrixATest -Dmaven.ext.class.path=C:\Program Files\NetBeans-12.0\netbeans\java\maven-nblib\netbeans-eventspy.jar -Dfile.encoding=UTF-8 surefire:test"/>
     <property name="java.specification.vendor" value="Oracle Corporation"/>
     <property name="user.language" value="pl"/>
     <property name="awt.toolkit" value="sun.awt.windows.WToolkit"/>
@@ -65,11 +65,65 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase classname="ciphers.RailFenceTest" name="ciphers.RailFenceTest.testRailFance" time="0.028"/>
-  <testcase classname="ciphers.RailFenceTest" name="ciphers.RailFenceTest.testDecode" time="0"/>
-  <testcase classname="ciphers.RailFenceTest" name="ciphers.RailFenceTest.testEncode" time="0"/>
-  <testcase classname="ciphers.RailFenceTest" name="ciphers.RailFenceTest.testEncode1" time="0"/>
-  <testcase classname="ciphers.RailFenceTest" name="ciphers.RailFenceTest.testEncode2" time="0"/>
-  <testcase classname="ciphers.RailFenceTest" name="ciphers.RailFenceTest.testDecode2" time="0"/>
-  <testcase classname="ciphers.RailFenceTest" name="ciphers.RailFenceTest.testDecode1" time="0"/>
+  <testcase classname="ciphers.TranspositionMatrixATest" name="ciphers.TranspositionMatrixATest.testEncode" time="0.036">
+    <failure message="expected: &lt;LADAMNZTYCYK&gt; but was: &lt;LMDAANCTZYYK&gt;" type="org.opentest4j.AssertionFailedError">org.opentest4j.AssertionFailedError: expected: &lt;LADAMNZTYCYK&gt; but was: &lt;LMDAANCTZYYK&gt;
+	at org.junit.jupiter.api.AssertionUtils.fail(AssertionUtils.java:55)
+	at org.junit.jupiter.api.AssertionUtils.failNotEqual(AssertionUtils.java:62)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:182)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:177)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:1124)
+	at ciphers.TranspositionMatrixATest.testEncode(TranspositionMatrixATest.java:25)
+</failure>
+  </testcase>
+  <testcase classname="ciphers.TranspositionMatrixATest" name="ciphers.TranspositionMatrixATest.testDecode" time="0">
+    <failure message="expected: &lt;DALAMTZNYCYK&gt; but was: &lt;DALMATYNCZYK&gt;" type="org.opentest4j.AssertionFailedError">org.opentest4j.AssertionFailedError: expected: &lt;DALAMTZNYCYK&gt; but was: &lt;DALMATYNCZYK&gt;
+	at org.junit.jupiter.api.AssertionUtils.fail(AssertionUtils.java:55)
+	at org.junit.jupiter.api.AssertionUtils.failNotEqual(AssertionUtils.java:62)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:182)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:177)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:1124)
+	at ciphers.TranspositionMatrixATest.testDecode(TranspositionMatrixATest.java:31)
+</failure>
+  </testcase>
+  <testcase classname="ciphers.TranspositionMatrixATest" name="ciphers.TranspositionMatrixATest.testMatrixA" time="0"/>
+  <testcase classname="ciphers.TranspositionMatrixATest" name="ciphers.TranspositionMatrixATest.testEncode2" time="0">
+    <failure message="expected: &lt;CAOWZKIRENICEMEKI&gt; but was: &lt;CZOAWKNRIEIEECMKI&gt;" type="org.opentest4j.AssertionFailedError">org.opentest4j.AssertionFailedError: expected: &lt;CAOWZKIRENICEMEKI&gt; but was: &lt;CZOAWKNRIEIEECMKI&gt;
+	at org.junit.jupiter.api.AssertionUtils.fail(AssertionUtils.java:55)
+	at org.junit.jupiter.api.AssertionUtils.failNotEqual(AssertionUtils.java:62)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:182)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:177)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:1124)
+	at ciphers.TranspositionMatrixATest.testEncode2(TranspositionMatrixATest.java:57)
+</failure>
+  </testcase>
+  <testcase classname="ciphers.TranspositionMatrixATest" name="ciphers.TranspositionMatrixATest.testDecode1" time="0">
+    <failure message="expected: &lt;LABARORD&gt; but was: &lt;LABRADOR&gt;" type="org.opentest4j.AssertionFailedError">org.opentest4j.AssertionFailedError: expected: &lt;LABARORD&gt; but was: &lt;LABRADOR&gt;
+	at org.junit.jupiter.api.AssertionUtils.fail(AssertionUtils.java:55)
+	at org.junit.jupiter.api.AssertionUtils.failNotEqual(AssertionUtils.java:62)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:182)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:177)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:1124)
+	at ciphers.TranspositionMatrixATest.testDecode1(TranspositionMatrixATest.java:51)
+</failure>
+  </testcase>
+  <testcase classname="ciphers.TranspositionMatrixATest" name="ciphers.TranspositionMatrixATest.testEncode1" time="0.001">
+    <failure message="expected: &lt;BALARRDO&gt; but was: &lt;BRLAARDO&gt;" type="org.opentest4j.AssertionFailedError">org.opentest4j.AssertionFailedError: expected: &lt;BALARRDO&gt; but was: &lt;BRLAARDO&gt;
+	at org.junit.jupiter.api.AssertionUtils.fail(AssertionUtils.java:55)
+	at org.junit.jupiter.api.AssertionUtils.failNotEqual(AssertionUtils.java:62)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:182)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:177)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:1124)
+	at ciphers.TranspositionMatrixATest.testEncode1(TranspositionMatrixATest.java:45)
+</failure>
+  </testcase>
+  <testcase classname="ciphers.TranspositionMatrixATest" name="ciphers.TranspositionMatrixATest.testDecode2" time="0.001">
+    <failure message="expected: &lt;OACWZRIKENECIMEKI&gt; but was: &lt;OWCZAREKNIEMIECKI&gt;" type="org.opentest4j.AssertionFailedError">org.opentest4j.AssertionFailedError: expected: &lt;OACWZRIKENECIMEKI&gt; but was: &lt;OWCZAREKNIEMIECKI&gt;
+	at org.junit.jupiter.api.AssertionUtils.fail(AssertionUtils.java:55)
+	at org.junit.jupiter.api.AssertionUtils.failNotEqual(AssertionUtils.java:62)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:182)
+	at org.junit.jupiter.api.AssertEquals.assertEquals(AssertEquals.java:177)
+	at org.junit.jupiter.api.Assertions.assertEquals(Assertions.java:1124)
+	at ciphers.TranspositionMatrixATest.testDecode2(TranspositionMatrixATest.java:63)
+</failure>
+  </testcase>
 </testsuite>

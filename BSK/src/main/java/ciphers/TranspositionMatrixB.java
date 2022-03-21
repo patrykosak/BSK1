@@ -37,6 +37,7 @@ public class TranspositionMatrixB {
                 }
             }
         }
+        encodedMessage = encodedMessage.replaceAll("\0", "");
         encodedMessage = encodedMessage.replaceAll(" ", "");
         return encodedMessage;
     }

@@ -7,8 +7,10 @@ public class RailFence {
         char[][] fence = new char[word.length()][key];
         int row = 0;
         boolean down = false;
+        //tworzenie płotka
         for(int i =0; i<word.length();i++){
             fence[i][row]=word.charAt(i);
+            //odbiajnie się od góry i od dołu
             if(row==key-1||row==0)
                 down=!down;
             if(down)
@@ -17,6 +19,7 @@ public class RailFence {
                 row--;
         }
 
+        //odczytywanie płotka
         String result = "";
         for (int j = 0; j < key; j++) {
             for (int i = 0; i < word.length(); i++) {
@@ -32,18 +35,19 @@ public class RailFence {
         char[][] fence = new char[word.length()][key];
         int row = 0;
         boolean down = false;
+        //tworzenie płotka
         for(int i =0; i<word.length();i++){
+            //zaznaczanie wystąpienia litery
             fence[i][row]='*';
+            //odbiajnie się od góry i od dołu
             if(row==key-1||row==0)
                 down=!down;
-            if(down)
-                row++;
-            else
-                row--;
+            if(down) row++;
+            else row--;
         }
 
         int charCounter = 0;
-
+        //zamiana gwiazdek na litery
         for(int j=0;j<key;j++){
             for(int i=0;i<word.length();i++){
                 if(fence[i][j]=='*'){
@@ -56,19 +60,15 @@ public class RailFence {
         String result="";
         down=false;
         row=0;
+        //odczytytanie wyniku
         for(int i=0;i<word.length();i++){
             if(row==0||row==key-1){
                 down=!down;
             }
             result+=fence[i][row];
-            if(down)
-                row++;
-            else
-                row--;
-
+            if(down) row++;
+            else row--;
         }
-
-
         return result;
     }
 

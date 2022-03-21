@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="7" failures="0" name="ciphers.RailFenceTest" time="0.028" errors="0" skipped="0">
+<testsuite tests="7" failures="0" name="ciphers.TranspositionMatrixBTest" time="0.015" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk1.8.0_261\jre\bin"/>
@@ -15,7 +15,7 @@
     <property name="user.country" value="PL"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="sun.os.patch.level" value=""/>
-    <property name="test" value="ciphers.RailFenceTest"/>
+    <property name="test" value="ciphers.TranspositionMatrixBTest"/>
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
     <property name="user.dir" value="C:\Users\xxx\Documents\NetBeansProjects\JavaApplication1\BSK"/>
     <property name="java.runtime.version" value="1.8.0_261-b12"/>
@@ -48,7 +48,7 @@
     <property name="java.vm.specification.version" value="1.8"/>
     <property name="sun.arch.data.model" value="64"/>
     <property name="java.home" value="C:\Program Files\Java\jdk1.8.0_261\jre"/>
-    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher -Dtest=ciphers.RailFenceTest -Dmaven.ext.class.path=C:\Program Files\NetBeans-12.0\netbeans\java\maven-nblib\netbeans-eventspy.jar -Dfile.encoding=UTF-8 surefire:test"/>
+    <property name="sun.java.command" value="org.codehaus.plexus.classworlds.launcher.Launcher -Dtest=ciphers.TranspositionMatrixBTest -Dmaven.ext.class.path=C:\Program Files\NetBeans-12.0\netbeans\java\maven-nblib\netbeans-eventspy.jar -Dfile.encoding=UTF-8 surefire:test"/>
     <property name="java.specification.vendor" value="Oracle Corporation"/>
     <property name="user.language" value="pl"/>
     <property name="awt.toolkit" value="sun.awt.windows.WToolkit"/>
@@ -65,11 +65,11 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="amd64"/>
   </properties>
-  <testcase classname="ciphers.RailFenceTest" name="ciphers.RailFenceTest.testRailFance" time="0.028"/>
-  <testcase classname="ciphers.RailFenceTest" name="ciphers.RailFenceTest.testDecode" time="0"/>
-  <testcase classname="ciphers.RailFenceTest" name="ciphers.RailFenceTest.testEncode" time="0"/>
-  <testcase classname="ciphers.RailFenceTest" name="ciphers.RailFenceTest.testEncode1" time="0"/>
-  <testcase classname="ciphers.RailFenceTest" name="ciphers.RailFenceTest.testEncode2" time="0"/>
-  <testcase classname="ciphers.RailFenceTest" name="ciphers.RailFenceTest.testDecode2" time="0"/>
-  <testcase classname="ciphers.RailFenceTest" name="ciphers.RailFenceTest.testDecode1" time="0"/>
+  <testcase classname="ciphers.TranspositionMatrixBTest" name="ciphers.TranspositionMatrixBTest.testEncode1" time="0.015"/>
+  <testcase classname="ciphers.TranspositionMatrixBTest" name="ciphers.TranspositionMatrixBTest.testDecode1" time="0"/>
+  <testcase classname="ciphers.TranspositionMatrixBTest" name="ciphers.TranspositionMatrixBTest.testEncode" time="0"/>
+  <testcase classname="ciphers.TranspositionMatrixBTest" name="ciphers.TranspositionMatrixBTest.testDecode" time="0"/>
+  <testcase classname="ciphers.TranspositionMatrixBTest" name="ciphers.TranspositionMatrixBTest.testMatrixB" time="0"/>
+  <testcase classname="ciphers.TranspositionMatrixBTest" name="ciphers.TranspositionMatrixBTest.testEncode2" time="0"/>
+  <testcase classname="ciphers.TranspositionMatrixBTest" name="ciphers.TranspositionMatrixBTest.testDecode2" time="0"/>
 </testsuite>

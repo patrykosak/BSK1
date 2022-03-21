@@ -14,51 +14,52 @@ import static org.junit.jupiter.api.Assertions.*;
  *
  * @author xxx
  */
-public class RailFenceTest {
-    public RailFenceTest() {
+public class TranspositionMatrixATest {
+    
+    public TranspositionMatrixATest() {
     }
-
+    
     @Test
     public void testEncode() {
-        String result = RailFence.encode("DALMATYNCZYK", 3);
-         assertEquals(result,"DACAMTNZKLYY");
+        String result = TranspositionMatrixA.encode("DALMATYNCZYK");
+         assertEquals(result,"LMDAANCTZYYK");
     }
 
     @Test
     public void testDecode() {
-        String result = RailFence.decode("DACAMTNZKLYY", 3);
+        String result = TranspositionMatrixA.decode("LMDAANCTZYYK");
          assertEquals(result,"DALMATYNCZYK");
     }
     
         @Test
-    public void testRailFance() {
+    public void testMatrixA() {
         String plainText = "THEGLOVESPROTECTMYFEETFROMEXCESSWORK";
-        String testCipherText = RailFence.encode(plainText, 3);
-        String testPlainText = RailFence.decode(testCipherText, 3);
+        String testCipherText = TranspositionMatrixA.encode(plainText);
+        String testPlainText = TranspositionMatrixA.decode(testCipherText);
             assertEquals(plainText,testPlainText);
     }
     
         @Test
     public void testEncode1() {
-        String result = RailFence.encode("LABRADOR", 4);
-            assertEquals(result,"LOADRBAR");
+        String result = TranspositionMatrixA.encode("LABRADOR");
+            assertEquals(result,"BRLAARDO");
     }
 
     @Test
     public void testDecode1() {
-        String result = RailFence.decode("LOADRBAR", 4);
+        String result = TranspositionMatrixA.decode("BRLAARDO");
         assertEquals(result,"LABRADOR");
     }
     
         @Test
     public void testEncode2() {
-        String result = RailFence.encode("OWCZAREKNIEMIECKI", 5);
-         assertEquals(result,"ONIWKIKCEECZRMEAI");
+        String result = TranspositionMatrixA.encode("OWCZAREKNIEMIECKI");
+         assertEquals(result,"CZOAWKNRIEIEECMKI");
     }
 
     @Test
     public void testDecode2() {
-        String result = RailFence.decode("ONIWKIKCEECZRMEAI", 5);
+        String result = TranspositionMatrixA.decode("CZOAWKNRIEIEECMKI");
          assertEquals(result,"OWCZAREKNIEMIECKI");
-    }
+    }    
 }
