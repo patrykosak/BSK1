@@ -44,7 +44,6 @@ public class TranspositionMatrixB {
 
 
     public static String decode(String message, String keyword) {
-
         int rows = message.length()/keyword.length() + 1; //obliczenie ilości wierszy
         int cols = keyword.length();
         char[][] matrix = new char[rows][cols];
@@ -88,7 +87,6 @@ public class TranspositionMatrixB {
         }
 
         result = result.replace("0", "");
-
         return result;
     }
 

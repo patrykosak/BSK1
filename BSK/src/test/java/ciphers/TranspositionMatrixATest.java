@@ -15,10 +15,11 @@ import static org.junit.jupiter.api.Assertions.*;
  * @author xxx
  */
 public class TranspositionMatrixATest {
-    Integer [] key = new Integer[]{3,4,1,5,2};
+    
     public TranspositionMatrixATest() {
     }
     
+    Integer [] key = new Integer[]{3,4,1,5,2};
     @Test
     public void testEncode() {
         String result = TranspositionMatrixA.encode("DALMATYNCZYK",key);
