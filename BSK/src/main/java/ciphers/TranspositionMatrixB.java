@@ -1,6 +1,7 @@
 package ciphers;
 
 import java.util.Arrays;
+import java.util.List;
 
 public class TranspositionMatrixB {
 
@@ -36,40 +37,58 @@ public class TranspositionMatrixB {
                 }
             }
         }
-        encodedMessage = encodedMessage.replaceAll("\0", "");
+        encodedMessage = encodedMessage.replaceAll(" ", "");
         return encodedMessage;
     }
 
 
     public static String decode(String message, String keyword) {
 
-        //Przygotowanie danych
-        String[] strings = message.split(" ");
-        message = message.replaceAll(" ", "");
-        int rows = message.length() / keyword.length() + 1;
-        char[][] matrix = new char[rows][keyword.length()];
-        char[] messageToDecode = message.toCharArray();
+        int rows = message.length()/keyword.length() + 1; //obliczenie ilości wierszy
+        int cols = keyword.length();
+        char[][] matrix = new char[rows][cols];
+        int iterator = 0; 
 
+        int spaces = rows * cols - message.length(); //obliczamy ilość nadmaiarowych komórek
+        int index = cols - 1;
+        while (spaces > 0) {
+            matrix[rows - 1][index] = '0'; // wypełniamy 0 nadmariowe komórki
+            spaces--;
+            index--;
+        }
 
-        //Dekodowanie wiadomości
-        int key[] = TranspositionMatrixB.getKey(keyword);
-        for(int keyNumber = 0; keyNumber < key.length; keyNumber++) {
-            char [] chunk = strings[key[keyNumber]-1].toCharArray();
-            for (int row = 0; row<rows;row ++) {
-                matrix[row][keyNumber] = chunk[row];
-                if(chunk.length == row+1)
-                    break;
+        // Przedstawienie klucza jako tablica intów
+        Integer[] keyOrder = new Integer[cols];
+        int iteratorKey = 1;
+        for (int i = 65; i <= 90; i++) {
+            for (int j = 0; j < keyword.length(); j++) {
+                if (i == (int)keyword.charAt(j)) {
+                    keyOrder[j] = iteratorKey;
+                    iteratorKey++;
+                }
             }
         }
-        //Odczytanie wiadomości
-        String clearMessage = "";
-        for (int row = 0; row < rows; row++) {
-            for (int col = 0; col < keyword.length(); col++) {
-                clearMessage += matrix[row][col];
+
+        // Wypełnienie macierzy
+        List<Integer> keyOrderList = Arrays.asList(keyOrder);
+        for (int j = 0; j < cols; j++) {
+            for (int i = 0; i < rows; i++) {
+                if (matrix[i][keyOrderList.indexOf(j+1)] != '0') {
+                    matrix[i][keyOrderList.indexOf(j+1)] = message.charAt(iterator);
+                    iterator++;
+                }
             }
         }
-        clearMessage = clearMessage.replaceAll("\0", "");
-        return clearMessage;
+        String result = "";
+        for (int i = 0; i < rows; i++) {
+            for (int j = 0; j < cols; j++) {
+                result += matrix[i][j];
+            }
+        }
+
+        result = result.replace("0", "");
+
+        return result;
     }
 
     // Metoda zwraca klucz w postaci tablicy liczb na podstawie danego słowa kluczowego
