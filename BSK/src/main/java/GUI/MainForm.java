@@ -5,6 +5,7 @@
  */
 package GUI;
 
+import ciphers.LFSRCipher;
 import ciphers.LFSRGenerator;
 import ciphers.RailFence;
 
@@ -75,6 +76,17 @@ public class MainForm extends javax.swing.JFrame {
         jButtonGenerate = new javax.swing.JButton();
         jLabel17 = new javax.swing.JLabel();
         JTextFieldLength = new javax.swing.JTextField();
+        jLabel18 = new javax.swing.JLabel();
+        jComboBoxStreamCipher = new javax.swing.JComboBox<>();
+        jLabel20 = new javax.swing.JLabel();
+        jTextFieldStreamWord = new javax.swing.JTextField();
+        JStreamScoreTextField = new javax.swing.JTextField();
+        jButton4 = new javax.swing.JButton();
+        jLabel21 = new javax.swing.JLabel();
+        JWordTextFieldStreamPolynomial = new javax.swing.JTextField();
+        jLabel22 = new javax.swing.JLabel();
+        jLabel23 = new javax.swing.JLabel();
+        JTextFieldStreamSeed = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -138,7 +150,7 @@ public class MainForm extends javax.swing.JFrame {
             }
         });
 
-        jButton3.setText("Sprawdź wynki");
+        jButton3.setText("Sprawdź wynik");
         jButton3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton3ActionPerformed(evt);
@@ -363,6 +375,48 @@ public class MainForm extends javax.swing.JFrame {
             }
         });
 
+        jLabel18.setText("Synchronous Stream Cipher");
+
+        jComboBoxStreamCipher.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Szyfracja", "Deszyfracja" }));
+        jComboBoxStreamCipher.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxStreamCipherActionPerformed(evt);
+            }
+        });
+
+        jLabel20.setText("Tekst");
+
+        JStreamScoreTextField.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JStreamScoreTextFieldActionPerformed(evt);
+            }
+        });
+
+        jButton4.setText("Sprawdź wynik");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
+
+        jLabel21.setText("Wynik");
+
+        JWordTextFieldStreamPolynomial.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JWordTextFieldStreamPolynomialActionPerformed(evt);
+            }
+        });
+
+        jLabel22.setText("Wielomian");
+
+        jLabel23.setText("Ziarno");
+
+        JTextFieldStreamSeed.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JTextFieldStreamSeedActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -390,12 +444,35 @@ public class MainForm extends javax.swing.JFrame {
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGap(18, 18, 18)
                                 .addComponent(JTextFieldLength, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addComponent(jLabel21, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(JWordTextFieldGeneratorScore, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(747, 747, 747)
-                                .addComponent(jButtonGenerate)))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addComponent(jButton4)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(JStreamScoreTextField, javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                        .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
+                                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(JWordTextFieldStreamPolynomial, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addGap(18, 18, 18)
+                                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addComponent(JTextFieldStreamSeed, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                                    .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addGap(18, 18, 18)
+                                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                                    .addGroup(jPanel2Layout.createSequentialGroup()
+                                                        .addComponent(jLabel20)
+                                                        .addGap(188, 188, 188))
+                                                    .addComponent(jTextFieldStreamWord)))
+                                            .addComponent(JWordTextFieldGeneratorScore, javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                                .addGap(747, 747, 747)
+                                                .addComponent(jButtonGenerate))))))
+                            .addComponent(jComboBoxStreamCipher, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(0, 11, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -420,7 +497,29 @@ public class MainForm extends javax.swing.JFrame {
                 .addComponent(JWordTextFieldGeneratorScore, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(jButtonGenerate)
-                .addContainerGap(501, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jComboBoxStreamCipher, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(39, 39, 39)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel22)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel23)
+                            .addComponent(jLabel20))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(JTextFieldStreamSeed, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldStreamWord, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(JWordTextFieldStreamPolynomial, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(13, 13, 13)
+                        .addComponent(jLabel21)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(JStreamScoreTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jButton4)))
+                .addContainerGap(218, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("LFSR", jPanel2);
@@ -558,6 +657,44 @@ public class MainForm extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_JTextFieldLengthActionPerformed
 
+    private void jComboBoxStreamCipherActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxStreamCipherActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBoxStreamCipherActionPerformed
+
+    private void JStreamScoreTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JStreamScoreTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_JStreamScoreTextFieldActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+
+      String polynomial = JWordTextFieldStreamPolynomial.getText();
+      Boolean[] boolsPolynomial = polynomial.chars().mapToObj((c) -> (char)c == '1').toArray(Boolean[]::new);
+      String seed = JTextFieldStreamSeed.getText();
+      Boolean[] boolsSeed = seed.chars().mapToObj((c) -> (char)c == '1').toArray(Boolean[]::new);
+      String word = jTextFieldStreamWord.getText();
+      Boolean[] boolsWord = seed.chars().mapToObj((c) -> (char)c == '1').toArray(Boolean[]::new);
+      
+        if(jComboBoxStreamCipher.getSelectedItem().equals("Szyfracja")){
+            Boolean[] score =  LFSRCipher.encode(word, boolsPolynomial,boolsSeed);
+             StringBuilder builder = new StringBuilder();
+        for(int i = 0; i < score.length; i++) {
+        if (score[i]) builder.append("1"); else builder.append("0");
+        }   
+            JStreamScoreTextField.setText(builder.toString());
+        }
+        else{
+            JStreamScoreTextField.setText(LFSRCipher.decode(boolsWord, boolsPolynomial,boolsSeed));
+        }
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void JWordTextFieldStreamPolynomialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JWordTextFieldStreamPolynomialActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_JWordTextFieldStreamPolynomialActionPerformed
+
+    private void JTextFieldStreamSeedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTextFieldStreamSeedActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_JTextFieldStreamSeedActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -596,8 +733,10 @@ public class MainForm extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JTextField JRailFenceNTextField;
     private javax.swing.JTextField JRailFenceScoreTextField;
+    private javax.swing.JTextField JStreamScoreTextField;
     private javax.swing.JTextField JTextFieldLength;
     private javax.swing.JTextField JTextFieldSeed;
+    private javax.swing.JTextField JTextFieldStreamSeed;
     private javax.swing.JTextField JTranspositionAKeyTextField1;
     private javax.swing.JTextField JTranspositionAScoreTextField;
     private javax.swing.JTextField JTranspositionBKeyTextField;
@@ -606,10 +745,13 @@ public class MainForm extends javax.swing.JFrame {
     private javax.swing.JTextField JWordTextField;
     private javax.swing.JTextField JWordTextFieldGeneratorScore;
     private javax.swing.JTextField JWordTextFieldPolynomial;
+    private javax.swing.JTextField JWordTextFieldStreamPolynomial;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
+    private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButtonGenerate;
+    private javax.swing.JComboBox<String> jComboBoxStreamCipher;
     private javax.swing.JComboBox<String> jComboBoxTranspositionA;
     private javax.swing.JComboBox<String> jComboBoxTranspositionB;
     private javax.swing.JLabel jLabel1;
@@ -621,7 +763,12 @@ public class MainForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
+    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
+    private javax.swing.JLabel jLabel23;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -632,6 +779,7 @@ public class MainForm extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTextField jTextFieldStreamWord;
     private javax.swing.JTextField jTextFieldWord2;
     private javax.swing.JTextField jTextFieldWord4;
     // End of variables declaration//GEN-END:variables
