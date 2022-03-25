@@ -672,7 +672,7 @@ public class MainForm extends javax.swing.JFrame {
       String seed = JTextFieldStreamSeed.getText();
       Boolean[] boolsSeed = seed.chars().mapToObj((c) -> (char)c == '1').toArray(Boolean[]::new);
       String word = jTextFieldStreamWord.getText();
-      Boolean[] boolsWord = seed.chars().mapToObj((c) -> (char)c == '1').toArray(Boolean[]::new);
+      Boolean[] boolsWord = word.chars().mapToObj((c) -> (char)c == '1').toArray(Boolean[]::new);
       
         if(jComboBoxStreamCipher.getSelectedItem().equals("Szyfracja")){
             Boolean[] score =  LFSRCipher.encode(word, boolsPolynomial,boolsSeed);
