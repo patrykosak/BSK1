@@ -11,15 +11,22 @@ import ciphers.RailFence;
 
 import ciphers.TranspositionMatrixA;
 import ciphers.TranspositionMatrixB;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.util.Arrays;
+import java.util.concurrent.TimeUnit;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import java.util.stream.Stream;
+import javax.swing.Timer;
 
 /**
  *
  * @author xxx
  */
 public class MainForm extends javax.swing.JFrame {
-    
+    private boolean ifGenerate=false;
+    private int index=0;
     /**
      * Creates new form MainForm
      */
@@ -36,6 +43,8 @@ public class MainForm extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         JTypeComboBox = new javax.swing.JComboBox<>();
@@ -74,8 +83,6 @@ public class MainForm extends javax.swing.JFrame {
         jLabel16 = new javax.swing.JLabel();
         JWordTextFieldGeneratorScore = new javax.swing.JTextField();
         jButtonGenerate = new javax.swing.JButton();
-        jLabel17 = new javax.swing.JLabel();
-        JTextFieldLength = new javax.swing.JTextField();
         jLabel18 = new javax.swing.JLabel();
         jComboBoxStreamCipher = new javax.swing.JComboBox<>();
         jLabel20 = new javax.swing.JLabel();
@@ -87,6 +94,11 @@ public class MainForm extends javax.swing.JFrame {
         jLabel22 = new javax.swing.JLabel();
         jLabel23 = new javax.swing.JLabel();
         JTextFieldStreamSeed = new javax.swing.JTextField();
+        jButtonStop = new javax.swing.JButton();
+
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jScrollPane1.setViewportView(jTextArea1);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -367,14 +379,6 @@ public class MainForm extends javax.swing.JFrame {
             }
         });
 
-        jLabel17.setText("Długość");
-
-        JTextFieldLength.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                JTextFieldLengthActionPerformed(evt);
-            }
-        });
-
         jLabel18.setText("Synchronous Stream Cipher");
 
         jComboBoxStreamCipher.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Szyfracja", "Deszyfracja" }));
@@ -417,63 +421,63 @@ public class MainForm extends javax.swing.JFrame {
             }
         });
 
+        jButtonStop.setText("Stop");
+        jButtonStop.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonStopActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(JStreamScoreTextField, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(JWordTextFieldGeneratorScore)
                     .addComponent(jLabel16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(jLabel21, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(JWordTextFieldStreamPolynomial, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(JTextFieldStreamSeed, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addComponent(jLabel20)
+                                .addGap(188, 244, Short.MAX_VALUE))
+                            .addComponent(jTextFieldStreamWord)))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButton4, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                                .addComponent(jButtonStop)
+                                .addGap(18, 18, 18)
+                                .addComponent(jButtonGenerate))))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jComboBoxStreamCipher, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(JWordTextFieldPolynomial)
                             .addGroup(jPanel2Layout.createSequentialGroup()
                                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addComponent(jLabel9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(jLabel8))
-                                .addGap(0, 0, Short.MAX_VALUE))
-                            .addComponent(JWordTextFieldPolynomial))
+                                .addGap(0, 0, Short.MAX_VALUE)))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(JTextFieldSeed, javax.swing.GroupLayout.PREFERRED_SIZE, 340, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(24, 24, 24)
-                                .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addComponent(JTextFieldLength, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addComponent(jLabel21, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jButton4)
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(JStreamScoreTextField, javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addComponent(jLabel18, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel2Layout.createSequentialGroup()
-                                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(jLabel22, javax.swing.GroupLayout.PREFERRED_SIZE, 132, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(JWordTextFieldStreamPolynomial, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                .addGap(18, 18, 18)
-                                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addComponent(JTextFieldStreamSeed, javax.swing.GroupLayout.PREFERRED_SIZE, 245, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                    .addComponent(jLabel23, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                                .addGap(18, 18, 18)
-                                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                    .addGroup(jPanel2Layout.createSequentialGroup()
-                                                        .addComponent(jLabel20)
-                                                        .addGap(188, 188, 188))
-                                                    .addComponent(jTextFieldStreamWord)))
-                                            .addComponent(JWordTextFieldGeneratorScore, javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                                .addGap(747, 747, 747)
-                                                .addComponent(jButtonGenerate))))))
-                            .addComponent(jComboBoxStreamCipher, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 11, Short.MAX_VALUE)))
+                            .addComponent(JTextFieldSeed, javax.swing.GroupLayout.PREFERRED_SIZE, 405, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -484,19 +488,19 @@ public class MainForm extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
-                    .addComponent(jLabel15)
-                    .addComponent(jLabel17))
+                    .addComponent(jLabel15))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(JWordTextFieldPolynomial, javax.swing.GroupLayout.DEFAULT_SIZE, 43, Short.MAX_VALUE)
-                    .addComponent(JTextFieldLength)
                     .addComponent(JTextFieldSeed))
                 .addGap(18, 18, 18)
                 .addComponent(jLabel16)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(JWordTextFieldGeneratorScore, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButtonGenerate)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonGenerate)
+                    .addComponent(jButtonStop))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel18)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -639,23 +643,39 @@ public class MainForm extends javax.swing.JFrame {
     }//GEN-LAST:event_JWordTextFieldGeneratorScoreActionPerformed
 
     private void jButtonGenerateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGenerateActionPerformed
-      
+      Thread t = new Thread(new Runnable() {
+      public void run() {
+      String returnScore="";
+      ifGenerate=true;
       String polynomial = JWordTextFieldPolynomial.getText();
       Boolean[] boolsPolynomial = polynomial.chars().mapToObj((c) -> (char)c == '1').toArray(Boolean[]::new);
       String seed = JTextFieldSeed.getText();
       Boolean[] boolsSeed = seed.chars().mapToObj((c) -> (char)c == '1').toArray(Boolean[]::new);
-      int length = Integer.parseInt(JTextFieldLength.getText());
-      Boolean[] score =  LFSRGenerator.generate(boolsPolynomial, boolsSeed, length);
+      Boolean[] score =  LFSRGenerator.generate(boolsPolynomial, boolsSeed, 100);
       StringBuilder builder = new StringBuilder();
         for (int i = 0; i < score.length; i++) {
         if (score[i]) builder.append("1"); else builder.append("0");
     }
-      JWordTextFieldGeneratorScore.setText(builder.toString());
-    }//GEN-LAST:event_jButtonGenerateActionPerformed
+        while(ifGenerate&&index<100){
 
-    private void JTextFieldLengthActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTextFieldLengthActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_JTextFieldLengthActionPerformed
+                   if(score[index]==true)
+                  returnScore+="1";
+              else
+                  returnScore+="0";  
+              JWordTextFieldGeneratorScore.setText(returnScore);
+          try {
+              Thread.sleep(900);
+          } catch (InterruptedException ex) {
+              Logger.getLogger(MainForm.class.getName()).log(Level.SEVERE, null, ex);
+          }
+            
+              index++;
+          
+        }
+           }
+});
+        t.start();
+    }//GEN-LAST:event_jButtonGenerateActionPerformed
 
     private void jComboBoxStreamCipherActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxStreamCipherActionPerformed
         // TODO add your handling code here:
@@ -694,6 +714,10 @@ public class MainForm extends javax.swing.JFrame {
     private void JTextFieldStreamSeedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTextFieldStreamSeedActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_JTextFieldStreamSeedActionPerformed
+
+    private void jButtonStopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonStopActionPerformed
+        ifGenerate=false;
+    }//GEN-LAST:event_jButtonStopActionPerformed
 
     /**
      * @param args the command line arguments
@@ -734,7 +758,6 @@ public class MainForm extends javax.swing.JFrame {
     private javax.swing.JTextField JRailFenceNTextField;
     private javax.swing.JTextField JRailFenceScoreTextField;
     private javax.swing.JTextField JStreamScoreTextField;
-    private javax.swing.JTextField JTextFieldLength;
     private javax.swing.JTextField JTextFieldSeed;
     private javax.swing.JTextField JTextFieldStreamSeed;
     private javax.swing.JTextField JTranspositionAKeyTextField1;
@@ -751,6 +774,7 @@ public class MainForm extends javax.swing.JFrame {
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButtonGenerate;
+    private javax.swing.JButton jButtonStop;
     private javax.swing.JComboBox<String> jComboBoxStreamCipher;
     private javax.swing.JComboBox<String> jComboBoxTranspositionA;
     private javax.swing.JComboBox<String> jComboBoxTranspositionB;
@@ -762,7 +786,6 @@ public class MainForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
-    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
@@ -778,7 +801,9 @@ public class MainForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField jTextFieldStreamWord;
     private javax.swing.JTextField jTextFieldWord2;
     private javax.swing.JTextField jTextFieldWord4;
