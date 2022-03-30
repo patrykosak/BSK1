@@ -5,6 +5,8 @@
  */
 package ciphers;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author xxx
@@ -20,7 +22,7 @@ public class DES {
             30, 40, 51, 45, 33, 48, 44, 49, 39, 56, 34, 53, 46, 42, 50, 36, 29,
             32 };
      
-       private int[] initialPermutation = { 58, 50, 42, 34, 26, 18, 10, 2, 60, 52, 44, 36,
+       private static int[] initialPermutation = { 58, 50, 42, 34, 26, 18, 10, 2, 60, 52, 44, 36,
             28, 20, 12, 4, 62, 54, 46, 38, 30, 22, 14, 6, 64, 56, 48, 40, 32,
             24, 16, 8, 57, 49, 41, 33, 25, 17, 9, 1, 59, 51, 43, 35, 27, 19,
             11, 3, 61, 53, 45, 37, 29, 21, 13, 5, 63, 55, 47, 39, 31, 23, 15, 7 };
@@ -43,7 +45,7 @@ public class DES {
             19, 59, 27, 34, 2, 42, 10, 50, 18, 58, 26, 33, 1, 41, 9, 49, 17,
             57, 25 };
         
-         private static int[][][] sbox = {
+         private int[][][] sbox = {
             { 		{ 14, 4, 13, 1, 2, 15, 11, 8, 3, 10, 6, 12, 5, 9, 0, 7 },
                     { 0, 15, 7, 4, 14, 2, 13, 1, 10, 6, 12, 11, 9, 5, 3, 8 },
                     { 4, 1, 14, 8, 13, 6, 2, 11, 15, 12, 9, 7, 3, 10, 5, 0 },
@@ -87,4 +89,23 @@ public class DES {
                     { 2, 1, 14, 7, 4, 10, 18, 13, 15, 12, 9, 0, 3, 5, 6, 11 }
 
             } };
+         
+         private static String encode(String text, String key){
+             String textAfterInitialPermutation = DES.permute(key, initialPermutation, 64)
+         return "";
+                 }
+         
+         private static String decode(){
+         return "";
+                 } 
+         
+         private static String permute(String key, int[] matrix, int size) {
+//             ArrayList<Character> keyOutput = new ArrayList<>();
+             String keyOutput="";
+             for(int x = 0; x < size; x++){
+                 int position = matrix[x];
+                 keyOutput+=key.charAt(position-1);
+             }
+             return keyOutput;
+            }
 }
