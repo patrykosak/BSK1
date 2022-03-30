@@ -12,7 +12,7 @@ import java.util.ArrayList;
  * @author xxx
  */
 public class DES {
-    private int[] pc1 = new int[]{ 57, 49, 41, 33, 25, 17, 9, 1, 58, 50, 42, 34,
+    private static int[] PC1 = new int[]{ 57, 49, 41, 33, 25, 17, 9, 1, 58, 50, 42, 34,
             26, 18, 10, 2, 59, 51, 43, 35, 27, 19, 11, 3, 60, 52, 44, 36, 63,
             55, 47, 39, 31, 23, 15, 7, 62, 54, 46, 38, 30, 22, 14, 6, 61, 53,
             45, 37, 29, 21, 13, 5, 28, 20, 12, 4 };
@@ -91,8 +91,12 @@ public class DES {
             } };
          
          private static String encode(String text, String key){
-             String textAfterInitialPermutation = DES.permute(key, initialPermutation, 64)
-         return "";
+             String textAfterInitialPermutation = DES.permute(key, initialPermutation, 64);
+             String textLeft = textAfterInitialPermutation.substring(0,32);
+             String textRight = textAfterInitialPermutation.substring(32);
+             String keyAfterPC1 = DES.permute(key, PC1, 56);
+             
+             return "";
                  }
          
          private static String decode(){
@@ -100,7 +104,6 @@ public class DES {
                  } 
          
          private static String permute(String key, int[] matrix, int size) {
-//             ArrayList<Character> keyOutput = new ArrayList<>();
              String keyOutput="";
              for(int x = 0; x < size; x++){
                  int position = matrix[x];
