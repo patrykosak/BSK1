@@ -6,6 +6,7 @@
 package ciphers;
 
 import java.util.ArrayList;
+import jdk.nashorn.internal.objects.NativeString;
 
 /**
  *
@@ -27,7 +28,7 @@ public class DES {
             24, 16, 8, 57, 49, 41, 33, 25, 17, 9, 1, 59, 51, 43, 35, 27, 19,
             11, 3, 61, 53, 45, 37, 29, 21, 13, 5, 63, 55, 47, 39, 31, 23, 15, 7 };
        
-        private int[] shift = { 1, 1, 2, 2, 2, 2, 2, 2, 1, 2, 2, 2, 2, 2,
+        private static int[] shift = { 1, 1, 2, 2, 2, 2, 2, 2, 1, 2, 2, 2, 2, 2,
             2, 1 };
         
         private int[] tableExtension = { 32, 1, 2, 3, 4, 5, 4, 5, 6, 7, 8, 9, 8,
@@ -95,7 +96,9 @@ public class DES {
              String textLeft = textAfterInitialPermutation.substring(0,32);
              String textRight = textAfterInitialPermutation.substring(32);
              String keyAfterPC1 = DES.permute(key, PC1, 56);
-             
+             String C0 = keyAfterPC1.substring(0,28);
+             String D0 = keyAfterPC1.substring(28);
+             ArrayList<String> subKeys = DES.generateSubKeys(C0, D0,shift);
              return "";
                  }
          
@@ -111,4 +114,23 @@ public class DES {
              }
              return keyOutput;
             }
+         
+         private static ArrayList<String> generateSubKeys(String leftHalf, String rightHalf, int[] shifts){
+             ArrayList<String> keys = new ArrayList<>();
+             for(int i = 0; i < 16; i++){
+                 for(int j = 0; j < shifts[i]; j++){
+                     leftHalf = DES.circularShiftLeft(leftHalf);
+                     rightHalf = DES.circularShiftLeft(rightHalf);
+                 }
+                 keys.add(leftHalf + rightHalf);
+             }
+             return keys;
+         }
+         
+         private static String circularShiftLeft(String half) {
+             char tempChar = half.charAt(0);
+             String rest = NativeString.substring(half, 1);
+             String output = rest + tempChar;
+             return output;
+         }
 }
