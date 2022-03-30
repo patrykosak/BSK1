@@ -91,7 +91,7 @@ public class DES {
 
             } };
          
-         private static String encode(String text, String key){
+        static String encode(String text, String key){
              String textAfterInitialPermutation = DES.permute(text, initialPermutation, 64);
              String textLeft = textAfterInitialPermutation.substring(0,32); //PL
              String textRight = textAfterInitialPermutation.substring(32);  //Pr
@@ -127,8 +127,41 @@ public class DES {
              return result;
                  }
          
-         private static String decode(){
-         return "";
+        static String decode(String text, String key){
+             String textAfterInitialPermutation = DES.permute(text, initialPermutation, 64);
+             String textLeft = textAfterInitialPermutation.substring(0,32); //PL
+             String textRight = textAfterInitialPermutation.substring(32);  //Pr
+             
+             String keyAfterPC1 = permute(key, PC1, 56);
+             String C0 = keyAfterPC1.substring(0,28);
+             String D0 = keyAfterPC1.substring(28);
+             
+             ArrayList<String> subKeys = generateSubKeys(C0, D0,shift);
+             ArrayList<String> finalKeys = new ArrayList<>();
+             for(int x = 15; x >= 0; x--){
+                 String keyPermuted = permute(subKeys.get(x), PC2, 48);
+                 finalKeys.add(keyPermuted);
+             }
+             
+             for(int i = 0; i < 16; i++){
+                 String nextLeft = textRight;
+                 String extendedRigtht = permute(textRight, tableExtension, 48);
+                 String XOROutputWithKey = XOR(extendedRigtht, finalKeys.get(i));
+                 
+                 String reducedOutput = SBox(XOROutputWithKey);
+                 String permuted = permute(reducedOutput, pMatrix, 32);
+                 String prefinal = XOR(permuted, textLeft);
+                 
+                 textLeft = nextLeft;
+                 textRight = prefinal;
+                 
+             }
+             
+             String outputBeforeFinalPermutation = textRight + textLeft;
+             String result = permute(outputBeforeFinalPermutation,finalPermutation,64);
+             
+             return result;
+             
                  } 
          
          private static String permute(String key, int[] matrix, int size) {
