@@ -31,22 +31,22 @@ public class DES {
         private static int[] shift = { 1, 1, 2, 2, 2, 2, 2, 2, 1, 2, 2, 2, 2, 2,
             2, 1 };
         
-        private int[] tableExtension = { 32, 1, 2, 3, 4, 5, 4, 5, 6, 7, 8, 9, 8,
+        private static int[] tableExtension = { 32, 1, 2, 3, 4, 5, 4, 5, 6, 7, 8, 9, 8,
             9, 10, 11, 12, 13, 12, 13, 14, 15, 16, 17, 16, 17, 18, 19, 20, 21,
             20, 21, 22, 23, 24, 25, 24, 25, 26, 27, 28, 29, 28, 29, 30, 31, 32,
             1 };
         
-        private int[] pMatrix = { 16, 7, 20, 21, 29, 12, 28, 17, 1, 15, 23, 26, 5,
+        private static int[] pMatrix = { 16, 7, 20, 21, 29, 12, 28, 17, 1, 15, 23, 26, 5,
             18, 31, 10, 2, 8, 24, 14, 32, 27, 3, 9, 19, 13, 30, 6, 22, 11, 4,
             25};
 
-          private int[] finalPermutation = { 40, 8, 48, 16, 56, 24, 64, 32, 39, 7, 47,
+          private static int[] finalPermutation = { 40, 8, 48, 16, 56, 24, 64, 32, 39, 7, 47,
             15, 55, 23, 63, 31, 38, 6, 46, 14, 54, 22, 62, 30, 37, 5, 45, 13,
             53, 21, 61, 29, 36, 4, 44, 12, 52, 20, 60, 28, 35, 3, 43, 11, 51,
             19, 59, 27, 34, 2, 42, 10, 50, 18, 58, 26, 33, 1, 41, 9, 49, 17,
             57, 25 };
         
-         private int[][][] sbox = {
+         private static int[][][] sbox = {
             { 		{ 14, 4, 13, 1, 2, 15, 11, 8, 3, 10, 6, 12, 5, 9, 0, 7 },
                     { 0, 15, 7, 4, 14, 2, 13, 1, 10, 6, 12, 11, 9, 5, 3, 8 },
                     { 4, 1, 14, 8, 13, 6, 2, 11, 15, 12, 9, 7, 3, 10, 5, 0 },
@@ -92,19 +92,39 @@ public class DES {
             } };
          
          private static String encode(String text, String key){
-             String textAfterInitialPermutation = DES.permute(key, initialPermutation, 64);
-             String textLeft = textAfterInitialPermutation.substring(0,32);
-             String textRight = textAfterInitialPermutation.substring(32);
+             String textAfterInitialPermutation = DES.permute(text, initialPermutation, 64);
+             String textLeft = textAfterInitialPermutation.substring(0,32); //PL
+             String textRight = textAfterInitialPermutation.substring(32);  //Pr
+             
              String keyAfterPC1 = permute(key, PC1, 56);
              String C0 = keyAfterPC1.substring(0,28);
              String D0 = keyAfterPC1.substring(28);
+             
              ArrayList<String> subKeys = generateSubKeys(C0, D0,shift);
              ArrayList<String> finalKeys = new ArrayList<>();
              for(int x = 0; x < 16; x++){
                  String keyPermuted = permute(subKeys.get(x), PC2, 48);
                  finalKeys.add(keyPermuted);
              }
-             return "";
+             
+             for(int i = 0; i < 16; i++){
+                 String nextLeft = textRight;
+                 String extendedRigtht = permute(textRight, tableExtension, 48);
+                 String XOROutputWithKey = XOR(extendedRigtht, finalKeys.get(i));
+                 
+                 String reducedOutput = SBox(XOROutputWithKey);
+                 String permuted = permute(reducedOutput, pMatrix, 32);
+                 String prefinal = XOR(permuted, textLeft);
+                 
+                 textLeft = nextLeft;
+                 textRight = prefinal;
+                 
+             }
+             
+             String outputBeforeFinalPermutation = textRight + textLeft;
+             String result = permute(outputBeforeFinalPermutation,finalPermutation,64);
+             
+             return result;
                  }
          
          private static String decode(){
@@ -137,5 +157,37 @@ public class DES {
              String rest = NativeString.substring(half, 1);
              String output = rest + tempChar;
              return output;
+         }
+         
+         private static String XOR(String a, String b){
+             StringBuilder sb = new StringBuilder();
+             for (int i = 0; i < a.length(); i++){
+                 sb.append((a.charAt(i) ^ b.charAt(i)));
+             }
+             return sb.toString();
+         }
+         
+         private static String SBox(String newRight){
+             StringBuilder builder = new StringBuilder();
+             
+             for (int i = 0; i < 48; i +=6){
+                 String sum = newRight.substring(i,i+6);
+                 char first = sum.charAt(0);
+                 char second = sum.charAt(5);
+                 StringBuilder sb = new StringBuilder();
+                 sb.append(first);
+                 sb.append(second);
+                 int row = Integer.parseInt(sb.toString(),2);
+                 String column = sum.substring(1,5);
+                 int col = Integer.parseInt(column,2);
+                 
+                 int value = sbox[i/6][row][col];
+                 String x = Integer.toBinaryString(value);
+                 while(x.length() < 4){
+                     x = "0"+x;
+                 }
+                 builder.append(x);
+             }
+             return builder.toString();
          }
 }
