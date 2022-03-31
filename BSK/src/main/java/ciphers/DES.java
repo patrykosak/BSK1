@@ -6,7 +6,6 @@
 package ciphers;
 
 import java.util.ArrayList;
-import jdk.nashorn.internal.objects.NativeString;
 
 /**
  *
@@ -187,7 +186,7 @@ public class DES {
          
          private static String circularShiftLeft(String half) {
              char tempChar = half.charAt(0);
-             String rest = NativeString.substring(half, 1);
+             String rest = half.substring(1);
              String output = rest + tempChar;
              return output;
          }
