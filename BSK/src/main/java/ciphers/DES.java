@@ -91,7 +91,7 @@ public class DES {
 
             } };
          
-        static String encode(String text, String key){
+        public static String encode(String text, String key){
              String textAfterInitialPermutation = DES.permute(text, initialPermutation, 64);
              String textLeft = textAfterInitialPermutation.substring(0,32); //PL
              String textRight = textAfterInitialPermutation.substring(32);  //Pr
@@ -127,7 +127,7 @@ public class DES {
              return result;
                  }
          
-        static String decode(String text, String key){
+        public static String decode(String text, String key){
              String textAfterInitialPermutation = DES.permute(text, initialPermutation, 64);
              String textLeft = textAfterInitialPermutation.substring(0,32); //PL
              String textRight = textAfterInitialPermutation.substring(32);  //Pr

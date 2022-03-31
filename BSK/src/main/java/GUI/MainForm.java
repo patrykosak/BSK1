@@ -5,6 +5,7 @@
  */
 package GUI;
 
+import ciphers.DES;
 import ciphers.LFSRCipher;
 import ciphers.LFSRGenerator;
 import ciphers.RailFence;
@@ -95,6 +96,19 @@ public class MainForm extends javax.swing.JFrame {
         jLabel23 = new javax.swing.JLabel();
         JTextFieldStreamSeed = new javax.swing.JTextField();
         jButtonStop = new javax.swing.JButton();
+        jPanel3 = new javax.swing.JPanel();
+        jComboBoxDES = new javax.swing.JComboBox<>();
+        jLabel17 = new javax.swing.JLabel();
+        jLabel19 = new javax.swing.JLabel();
+        jLabel24 = new javax.swing.JLabel();
+        JWordTextFieldPolynomialDES = new javax.swing.JTextField();
+        JWordTextFieldSeedDES = new javax.swing.JTextField();
+        jTextFieldDESMessage = new javax.swing.JTextField();
+        keyDES = new javax.swing.JLabel();
+        jTextFieldKeyDES = new javax.swing.JTextField();
+        jButtonGenerateKeyDES = new javax.swing.JButton();
+        jButtonGenerateDES = new javax.swing.JButton();
+        jTextFieldGeneratedDES = new javax.swing.JTextField();
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
@@ -523,10 +537,134 @@ public class MainForm extends javax.swing.JFrame {
                         .addComponent(JStreamScoreTextField, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(jButton4)))
-                .addContainerGap(218, Short.MAX_VALUE))
+                .addContainerGap(132, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("LFSR", jPanel2);
+
+        jComboBoxDES.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Szyfracja", "Deszyfracja" }));
+        jComboBoxDES.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxDESActionPerformed(evt);
+            }
+        });
+
+        jLabel17.setText("Generator Klucza");
+
+        jLabel19.setText("Wielomian");
+
+        jLabel24.setText("Ziarno");
+
+        JWordTextFieldPolynomialDES.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JWordTextFieldPolynomialDESActionPerformed(evt);
+            }
+        });
+
+        JWordTextFieldSeedDES.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JWordTextFieldSeedDESActionPerformed(evt);
+            }
+        });
+
+        jTextFieldDESMessage.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldDESMessageActionPerformed(evt);
+            }
+        });
+
+        keyDES.setText("Wielomian");
+
+        jTextFieldKeyDES.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldKeyDESActionPerformed(evt);
+            }
+        });
+
+        jButtonGenerateKeyDES.setText("Generuj");
+        jButtonGenerateKeyDES.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonGenerateKeyDESActionPerformed(evt);
+            }
+        });
+
+        jButtonGenerateDES.setText("Generuj");
+        jButtonGenerateDES.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonGenerateDESActionPerformed(evt);
+            }
+        });
+
+        jTextFieldGeneratedDES.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldGeneratedDESActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
+        jPanel3.setLayout(jPanel3Layout);
+        jPanel3Layout.setHorizontalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(jLabel19, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addGap(231, 231, 231)
+                        .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(261, 261, 261))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addComponent(keyDES, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addContainerGap())
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jButtonGenerateKeyDES, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel3Layout.createSequentialGroup()
+                                .addComponent(JWordTextFieldPolynomialDES, javax.swing.GroupLayout.PREFERRED_SIZE, 357, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(JWordTextFieldSeedDES, javax.swing.GroupLayout.PREFERRED_SIZE, 357, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(jTextFieldKeyDES, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel17, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jComboBoxDES, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jTextFieldDESMessage, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTextFieldGeneratedDES, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 732, Short.MAX_VALUE)
+                            .addComponent(jButtonGenerateDES, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE))))
+        );
+        jPanel3Layout.setVerticalGroup(
+            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(JWordTextFieldPolynomialDES, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(JWordTextFieldSeedDES, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(10, 10, 10)
+                .addComponent(jButtonGenerateKeyDES, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(keyDES, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTextFieldKeyDES, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(23, 23, 23)
+                .addComponent(jComboBoxDES, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(26, 26, 26)
+                .addComponent(jTextFieldDESMessage, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jButtonGenerateDES, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jTextFieldGeneratedDES, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(144, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("DES", jPanel3);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -542,69 +680,102 @@ public class MainForm extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void JTypeComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTypeComboBoxActionPerformed
+    private void jButtonStopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonStopActionPerformed
+        ifGenerate=false;
+    }//GEN-LAST:event_jButtonStopActionPerformed
+
+    private void JTextFieldStreamSeedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTextFieldStreamSeedActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_JTypeComboBoxActionPerformed
+    }//GEN-LAST:event_JTextFieldStreamSeedActionPerformed
 
-    private void JWordTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JWordTextFieldActionPerformed
+    private void JWordTextFieldStreamPolynomialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JWordTextFieldStreamPolynomialActionPerformed
         // TODO add your handling code here:
-        
-    }//GEN-LAST:event_JWordTextFieldActionPerformed
+    }//GEN-LAST:event_JWordTextFieldStreamPolynomialActionPerformed
 
-    private void JRailFenceNTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JRailFenceNTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_JRailFenceNTextFieldActionPerformed
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
 
-    private void JRailFenceScoreTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JRailFenceScoreTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_JRailFenceScoreTextFieldActionPerformed
+        String polynomial = JWordTextFieldStreamPolynomial.getText();
+        Boolean[] boolsPolynomial = polynomial.chars().mapToObj((c) -> (char)c == '1').toArray(Boolean[]::new);
+        String seed = JTextFieldStreamSeed.getText();
+        Boolean[] boolsSeed = seed.chars().mapToObj((c) -> (char)c == '1').toArray(Boolean[]::new);
+        String word = jTextFieldStreamWord.getText();
+        Boolean[] boolsWord = word.chars().mapToObj((c) -> (char)c == '1').toArray(Boolean[]::new);
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-
-        String word = JWordTextField.getText().toUpperCase();
-        int n = 2;
-        if(!JRailFenceNTextField.getText().equals(""))
-            n = Integer.parseInt(JRailFenceNTextField.getText());
-        
-        if(JTypeComboBox.getSelectedItem().equals("Szyfracja")){
-            JRailFenceScoreTextField.setText(RailFence.encode(word, n));
+        if(jComboBoxStreamCipher.getSelectedItem().equals("Szyfracja")){
+            Boolean[] score =  LFSRCipher.encode(word, boolsPolynomial,boolsSeed);
+            StringBuilder builder = new StringBuilder();
+            for(int i = 0; i < score.length; i++) {
+                if (score[i]) builder.append("1"); else builder.append("0");
+            }
+            JStreamScoreTextField.setText(builder.toString());
         }
         else{
-            JRailFenceScoreTextField.setText(RailFence.decode(word, n));
+            JStreamScoreTextField.setText(LFSRCipher.decode(boolsWord, boolsPolynomial,boolsSeed));
         }
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_jButton4ActionPerformed
 
-    private void jComboBoxTranspositionAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxTranspositionAActionPerformed
+    private void JStreamScoreTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JStreamScoreTextFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBoxTranspositionAActionPerformed
+    }//GEN-LAST:event_JStreamScoreTextFieldActionPerformed
 
-    private void JTranspositionAScoreTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTranspositionAScoreTextFieldActionPerformed
+    private void jComboBoxStreamCipherActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxStreamCipherActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_JTranspositionAScoreTextFieldActionPerformed
+    }//GEN-LAST:event_jComboBoxStreamCipherActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        // TODO add your handling code here:
-        String word = jTextFieldWord2.getText().toUpperCase();
-        
-        String key = JTranspositionAKeyTextField1.getText();
-        String[] splitted = key.split("-");
-        Integer[] singleNumbers = Stream.of(splitted).mapToInt(Integer::parseInt).boxed().toArray(Integer[]::new);
-        
-        if(jComboBoxTranspositionA.getSelectedItem().equals("Szyfracja")){
-            JTranspositionAScoreTextField.setText(TranspositionMatrixA.encode(word,singleNumbers));
-        }
-        else{
-            JTranspositionAScoreTextField.setText(TranspositionMatrixA.decode(word,singleNumbers));
-        }
-    }//GEN-LAST:event_jButton3ActionPerformed
+    private void jButtonGenerateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGenerateActionPerformed
+        Thread t = new Thread(new Runnable() {
+            public void run() {
+                String returnScore="";
+                ifGenerate=true;
+                String polynomial = JWordTextFieldPolynomial.getText();
+                Boolean[] boolsPolynomial = polynomial.chars().mapToObj((c) -> (char)c == '1').toArray(Boolean[]::new);
+                String seed = JTextFieldSeed.getText();
+                Boolean[] boolsSeed = seed.chars().mapToObj((c) -> (char)c == '1').toArray(Boolean[]::new);
+                Boolean[] score =  LFSRGenerator.generate(boolsPolynomial, boolsSeed, 100);
+                StringBuilder builder = new StringBuilder();
+                for (int i = 0; i < score.length; i++) {
+                    if (score[i]) builder.append("1"); else builder.append("0");
+                }
+                while(ifGenerate&&index<100){
 
-    private void jComboBoxTranspositionBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxTranspositionBActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBoxTranspositionBActionPerformed
+                    if(score[index]==true)
+                    returnScore+="1";
+                    else
+                    returnScore+="0";
+                    JWordTextFieldGeneratorScore.setText(returnScore);
+                    try {
+                        Thread.sleep(900);
+                    } catch (InterruptedException ex) {
+                        Logger.getLogger(MainForm.class.getName()).log(Level.SEVERE, null, ex);
+                    }
 
-    private void JTranspositionBScoreTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTranspositionBScoreTextFieldActionPerformed
+                    index++;
+
+                }
+            }
+        });
+        t.start();
+    }//GEN-LAST:event_jButtonGenerateActionPerformed
+
+    private void JWordTextFieldGeneratorScoreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JWordTextFieldGeneratorScoreActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_JTranspositionBScoreTextFieldActionPerformed
+    }//GEN-LAST:event_JWordTextFieldGeneratorScoreActionPerformed
+
+    private void JTextFieldSeedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTextFieldSeedActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_JTextFieldSeedActionPerformed
+
+    private void JWordTextFieldPolynomialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JWordTextFieldPolynomialActionPerformed
+
+    }//GEN-LAST:event_JWordTextFieldPolynomialActionPerformed
+
+    private void JTranspositionAKeyTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTranspositionAKeyTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_JTranspositionAKeyTextField1ActionPerformed
+
+    private void JTranspositionBKeyTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTranspositionBKeyTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_JTranspositionBKeyTextFieldActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         String word = jTextFieldWord4.getText().toUpperCase();
@@ -617,107 +788,125 @@ public class MainForm extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton5ActionPerformed
 
-    private void JTranspositionBKeyTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTranspositionBKeyTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_JTranspositionBKeyTextFieldActionPerformed
-
-    private void JTranspositionAKeyTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTranspositionAKeyTextField1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_JTranspositionAKeyTextField1ActionPerformed
-
     private void jTextFieldWord4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldWord4ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldWord4ActionPerformed
 
-    private void JWordTextFieldPolynomialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JWordTextFieldPolynomialActionPerformed
-    
-      
-    }//GEN-LAST:event_JWordTextFieldPolynomialActionPerformed
-
-    private void JTextFieldSeedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTextFieldSeedActionPerformed
+    private void JTranspositionBScoreTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTranspositionBScoreTextFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_JTextFieldSeedActionPerformed
+    }//GEN-LAST:event_JTranspositionBScoreTextFieldActionPerformed
 
-    private void JWordTextFieldGeneratorScoreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JWordTextFieldGeneratorScoreActionPerformed
+    private void jComboBoxTranspositionBActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxTranspositionBActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_JWordTextFieldGeneratorScoreActionPerformed
+    }//GEN-LAST:event_jComboBoxTranspositionBActionPerformed
 
-    private void jButtonGenerateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGenerateActionPerformed
-      Thread t = new Thread(new Runnable() {
-      public void run() {
-      String returnScore="";
-      ifGenerate=true;
-      String polynomial = JWordTextFieldPolynomial.getText();
-      Boolean[] boolsPolynomial = polynomial.chars().mapToObj((c) -> (char)c == '1').toArray(Boolean[]::new);
-      String seed = JTextFieldSeed.getText();
-      Boolean[] boolsSeed = seed.chars().mapToObj((c) -> (char)c == '1').toArray(Boolean[]::new);
-      Boolean[] score =  LFSRGenerator.generate(boolsPolynomial, boolsSeed, 100);
-      StringBuilder builder = new StringBuilder();
-        for (int i = 0; i < score.length; i++) {
-        if (score[i]) builder.append("1"); else builder.append("0");
-    }
-        while(ifGenerate&&index<100){
-
-                   if(score[index]==true)
-                  returnScore+="1";
-              else
-                  returnScore+="0";  
-              JWordTextFieldGeneratorScore.setText(returnScore);
-          try {
-              Thread.sleep(900);
-          } catch (InterruptedException ex) {
-              Logger.getLogger(MainForm.class.getName()).log(Level.SEVERE, null, ex);
-          }
-            
-              index++;
-          
-        }
-           }
-});
-        t.start();
-    }//GEN-LAST:event_jButtonGenerateActionPerformed
-
-    private void jComboBoxStreamCipherActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxStreamCipherActionPerformed
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBoxStreamCipherActionPerformed
+        String word = jTextFieldWord2.getText().toUpperCase();
 
-    private void JStreamScoreTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JStreamScoreTextFieldActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_JStreamScoreTextFieldActionPerformed
+        String key = JTranspositionAKeyTextField1.getText();
+        String[] splitted = key.split("-");
+        Integer[] singleNumbers = Stream.of(splitted).mapToInt(Integer::parseInt).boxed().toArray(Integer[]::new);
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-
-      String polynomial = JWordTextFieldStreamPolynomial.getText();
-      Boolean[] boolsPolynomial = polynomial.chars().mapToObj((c) -> (char)c == '1').toArray(Boolean[]::new);
-      String seed = JTextFieldStreamSeed.getText();
-      Boolean[] boolsSeed = seed.chars().mapToObj((c) -> (char)c == '1').toArray(Boolean[]::new);
-      String word = jTextFieldStreamWord.getText();
-      Boolean[] boolsWord = word.chars().mapToObj((c) -> (char)c == '1').toArray(Boolean[]::new);
-      
-        if(jComboBoxStreamCipher.getSelectedItem().equals("Szyfracja")){
-            Boolean[] score =  LFSRCipher.encode(word, boolsPolynomial,boolsSeed);
-             StringBuilder builder = new StringBuilder();
-        for(int i = 0; i < score.length; i++) {
-        if (score[i]) builder.append("1"); else builder.append("0");
-        }   
-            JStreamScoreTextField.setText(builder.toString());
+        if(jComboBoxTranspositionA.getSelectedItem().equals("Szyfracja")){
+            JTranspositionAScoreTextField.setText(TranspositionMatrixA.encode(word));
         }
         else{
-            JStreamScoreTextField.setText(LFSRCipher.decode(boolsWord, boolsPolynomial,boolsSeed));
+            JTranspositionAScoreTextField.setText(TranspositionMatrixA.decode(word));
         }
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_jButton3ActionPerformed
 
-    private void JWordTextFieldStreamPolynomialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JWordTextFieldStreamPolynomialActionPerformed
+    private void JTranspositionAScoreTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTranspositionAScoreTextFieldActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_JWordTextFieldStreamPolynomialActionPerformed
+    }//GEN-LAST:event_JTranspositionAScoreTextFieldActionPerformed
 
-    private void JTextFieldStreamSeedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTextFieldStreamSeedActionPerformed
+    private void jComboBoxTranspositionAActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxTranspositionAActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_JTextFieldStreamSeedActionPerformed
+    }//GEN-LAST:event_jComboBoxTranspositionAActionPerformed
 
-    private void jButtonStopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonStopActionPerformed
-        ifGenerate=false;
-    }//GEN-LAST:event_jButtonStopActionPerformed
+    private void JRailFenceScoreTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JRailFenceScoreTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_JRailFenceScoreTextFieldActionPerformed
+
+    private void JRailFenceNTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JRailFenceNTextFieldActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_JRailFenceNTextFieldActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+
+        String word = JWordTextField.getText().toUpperCase();
+        int n = 2;
+        if(!JRailFenceNTextField.getText().equals(""))
+        n = Integer.parseInt(JRailFenceNTextField.getText());
+
+        if(JTypeComboBox.getSelectedItem().equals("Szyfracja")){
+            JRailFenceScoreTextField.setText(RailFence.encode(word, n));
+        }
+        else{
+            JRailFenceScoreTextField.setText(RailFence.decode(word, n));
+        }
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void JWordTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JWordTextFieldActionPerformed
+        // TODO add your handling code here:
+
+    }//GEN-LAST:event_JWordTextFieldActionPerformed
+
+    private void JTypeComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTypeComboBoxActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_JTypeComboBoxActionPerformed
+
+    private void JWordTextFieldSeedDESActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JWordTextFieldSeedDESActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_JWordTextFieldSeedDESActionPerformed
+
+    private void JWordTextFieldPolynomialDESActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JWordTextFieldPolynomialDESActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_JWordTextFieldPolynomialDESActionPerformed
+
+    private void jComboBoxDESActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxDESActionPerformed
+
+    }//GEN-LAST:event_jComboBoxDESActionPerformed
+
+    private void jTextFieldDESMessageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldDESMessageActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldDESMessageActionPerformed
+
+    private void jTextFieldKeyDESActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldKeyDESActionPerformed
+        
+    }//GEN-LAST:event_jTextFieldKeyDESActionPerformed
+
+    private void jButtonGenerateKeyDESActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGenerateKeyDESActionPerformed
+        String polynomialDES = JWordTextFieldPolynomialDES.getText();
+        Boolean[] boolsPolynomialDES = polynomialDES.chars().mapToObj((c) -> (char)c == '1').toArray(Boolean[]::new);
+        String seedDES = JWordTextFieldSeedDES.getText();
+        Boolean[] boolsSeedDES = seedDES.chars().mapToObj((c) -> (char)c == '1').toArray(Boolean[]::new);
+        Boolean[] score = LFSRGenerator.generate(boolsPolynomialDES, boolsSeedDES, 64);
+        StringBuilder builder = new StringBuilder();
+            for(int i = 0; i < score.length; i++) {
+                if (score[i]) builder.append("1"); else builder.append("0");
+            }
+        jTextFieldKeyDES.setText(builder.toString());
+    }//GEN-LAST:event_jButtonGenerateKeyDESActionPerformed
+
+    private void jTextFieldGeneratedDESActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldGeneratedDESActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldGeneratedDESActionPerformed
+
+    private void jButtonGenerateDESActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGenerateDESActionPerformed
+        String word = jTextFieldDESMessage.getText();
+        String key = jTextFieldKeyDES.getText();
+        String score;
+        if(jComboBoxDES.getSelectedItem().equals("Szyfracja")){
+            score = DES.encode(word, key);
+            jTextFieldGeneratedDES.setText(score);
+        }else{
+            score = DES.decode(word, key);
+            jTextFieldGeneratedDES.setText(score);
+        }
+        
+        
+    }//GEN-LAST:event_jButtonGenerateDESActionPerformed
 
     /**
      * @param args the command line arguments
@@ -768,13 +957,18 @@ public class MainForm extends javax.swing.JFrame {
     private javax.swing.JTextField JWordTextField;
     private javax.swing.JTextField JWordTextFieldGeneratorScore;
     private javax.swing.JTextField JWordTextFieldPolynomial;
+    private javax.swing.JTextField JWordTextFieldPolynomialDES;
+    private javax.swing.JTextField JWordTextFieldSeedDES;
     private javax.swing.JTextField JWordTextFieldStreamPolynomial;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButtonGenerate;
+    private javax.swing.JButton jButtonGenerateDES;
+    private javax.swing.JButton jButtonGenerateKeyDES;
     private javax.swing.JButton jButtonStop;
+    private javax.swing.JComboBox<String> jComboBoxDES;
     private javax.swing.JComboBox<String> jComboBoxStreamCipher;
     private javax.swing.JComboBox<String> jComboBoxTranspositionA;
     private javax.swing.JComboBox<String> jComboBoxTranspositionB;
@@ -786,12 +980,15 @@ public class MainForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -801,11 +998,16 @@ public class MainForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTextArea jTextArea1;
+    private javax.swing.JTextField jTextFieldDESMessage;
+    private javax.swing.JTextField jTextFieldGeneratedDES;
+    private javax.swing.JTextField jTextFieldKeyDES;
     private javax.swing.JTextField jTextFieldStreamWord;
     private javax.swing.JTextField jTextFieldWord2;
     private javax.swing.JTextField jTextFieldWord4;
+    private javax.swing.JLabel keyDES;
     // End of variables declaration//GEN-END:variables
 }
