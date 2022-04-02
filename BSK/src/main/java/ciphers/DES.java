@@ -6,6 +6,8 @@
 package ciphers;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 /**
  *
@@ -221,5 +223,73 @@ public class DES {
                  builder.append(x);
              }
              return builder.toString();
-         }
+        }
+
+    private static String convertBytesIntoString(String input){
+        StringBuilder sb = new StringBuilder();
+        Arrays.stream(input.split("(?<=\\G.{8})")).forEach(s ->sb.append((char) Integer.parseInt(s, 2)));
+        return sb.toString();
+    }
+
+    private static String convertStringToBinary(String input) {
+
+        StringBuilder result = new StringBuilder();
+        char[] chars = input.toCharArray();
+        for (char aChar : chars) {
+            result.append(
+                    String.format("%8s", Integer.toBinaryString(aChar))   // char -> int, auto-cast
+                            .replaceAll(" ", "0")                         // zero pads
+            );
+        }
+        return result.toString();
+    }
+
+    private static List<String> splitToEncode(String text) {
+        String[] results = text.split("(?<=\\G.{" + 8 + "})");
+        if ( results[results.length-1].length() != 8) {
+            int zeros = 8 - results[results.length-1].length();
+            for (int i = 0; i < zeros-1; i++)
+                results[results.length-1] += "0";
+            results[results.length-1] += zeros;
+            return Arrays.asList(results);
+        }
+        else {
+            String[] f_results = Arrays.copyOf(results, results.length+1);
+            f_results[results.length] = "0000000~";
+            return Arrays.asList(f_results);
+        }
+    }
+
+    private static List<String> splitToDecode(String text) {
+        String[] results = text.split("(?<=\\G.{" + 64 + "})");
+        return Arrays.asList(results);
+    }
+
+    public static String takeIn(String text) {
+        List<String> strings = splitToEncode(text);
+        String out = "";
+        for ( String string : strings) {
+             String str = convertStringToBinary(string);
+             String encoded = encode(str,"KEY");
+             out += encoded;
+        }
+        return out;
+    }
+
+    public static String takeOut(String text) {
+        List<String> strings = splitToDecode(text);
+        String out = "";
+        for (String string : strings) {
+            String decoded = decode(string, "KEY");
+            String str = convertBytesIntoString(decoded);
+            if ( strings.indexOf(string) == strings.size() - 1) {
+                if ( str.equals("0000000~"))
+                    break;
+                int bits = Character.getNumericValue(str.charAt(str.length() - 1));
+                str = str.substring(0, str.length()-bits);
+            }
+            out += str;
+        }
+        return out;
+    }
 }
