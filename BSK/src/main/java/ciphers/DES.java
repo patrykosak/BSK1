@@ -165,6 +165,7 @@ public class DES {
              
                  } 
          
+        
          private static String permute(String key, int[] matrix, int size) {
              String keyOutput="";
              for(int x = 0; x < size; x++){

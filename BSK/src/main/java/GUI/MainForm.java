@@ -98,7 +98,6 @@ public class MainForm extends javax.swing.JFrame {
         jButtonStop = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jComboBoxDES = new javax.swing.JComboBox<>();
-        jTextFieldDESScore = new javax.swing.JTextField();
         keyDES = new javax.swing.JLabel();
         jTextFieldTextDES = new javax.swing.JTextField();
         szyfruj = new javax.swing.JButton();
@@ -106,6 +105,8 @@ public class MainForm extends javax.swing.JFrame {
         jLabel17 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
         jTextFieldDESKey = new javax.swing.JTextField();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTextFieldDESScore = new javax.swing.JTextArea();
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
@@ -546,12 +547,6 @@ public class MainForm extends javax.swing.JFrame {
             }
         });
 
-        jTextFieldDESScore.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldDESScoreActionPerformed(evt);
-            }
-        });
-
         keyDES.setText("Tekst");
 
         jTextFieldTextDES.addActionListener(new java.awt.event.ActionListener() {
@@ -567,7 +562,7 @@ public class MainForm extends javax.swing.JFrame {
             }
         });
 
-        keyDES1.setText("Klucz (w postaci Hexagonalnej)");
+        keyDES1.setText("Klucz");
 
         jLabel17.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
         jLabel17.setText("DES");
@@ -580,6 +575,10 @@ public class MainForm extends javax.swing.JFrame {
             }
         });
 
+        jTextFieldDESScore.setColumns(20);
+        jTextFieldDESScore.setRows(5);
+        jScrollPane2.setViewportView(jTextFieldDESScore);
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
@@ -590,58 +589,45 @@ public class MainForm extends javax.swing.JFrame {
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jComboBoxDES, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(keyDES1, javax.swing.GroupLayout.PREFERRED_SIZE, 732, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel17)
-                        .addGap(0, 0, Short.MAX_VALUE))
+                            .addComponent(keyDES1, javax.swing.GroupLayout.PREFERRED_SIZE, 732, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel17))
+                        .addGap(0, 96, Short.MAX_VALUE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane2)
+                            .addComponent(jTextFieldDESKey, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jTextFieldTextDES)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 694, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE)
                                 .addComponent(szyfruj, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(keyDES, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(jPanel3Layout.createSequentialGroup()
                                 .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addGap(0, 0, Short.MAX_VALUE)))
                         .addContainerGap())))
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextFieldTextDES, javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jTextFieldDESScore))
-                .addContainerGap())
-            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel3Layout.createSequentialGroup()
-                    .addGap(11, 11, 11)
-                    .addComponent(jTextFieldDESKey, javax.swing.GroupLayout.DEFAULT_SIZE, 828, Short.MAX_VALUE)
-                    .addContainerGap()))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel17)
-                .addGap(18, 18, 18)
+                .addGap(11, 11, 11)
                 .addComponent(jComboBoxDES, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(13, 13, 13)
                 .addComponent(keyDES, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jTextFieldTextDES, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(keyDES1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(69, 69, 69)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTextFieldDESKey, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel19)
                 .addGap(18, 18, 18)
-                .addComponent(jTextFieldDESScore, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(33, 33, 33)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 211, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(szyfruj, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(206, Short.MAX_VALUE))
-            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel3Layout.createSequentialGroup()
-                    .addGap(247, 247, 247)
-                    .addComponent(jTextFieldDESKey, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(357, Short.MAX_VALUE)))
+                .addGap(62, 62, 62))
         );
 
         jTabbedPane1.addTab("DES", jPanel3);
@@ -840,10 +826,6 @@ public class MainForm extends javax.swing.JFrame {
 
     }//GEN-LAST:event_jComboBoxDESActionPerformed
 
-    private void jTextFieldDESScoreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldDESScoreActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldDESScoreActionPerformed
-
     private void jTextFieldTextDESActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldTextDESActionPerformed
         
     }//GEN-LAST:event_jTextFieldTextDESActionPerformed
@@ -852,6 +834,8 @@ public class MainForm extends javax.swing.JFrame {
         String key = jTextFieldDESKey.getText();
         String text = jTextFieldTextDES.getText();
         String score;
+        jTextFieldDESScore.setLineWrap(true);
+        jTextFieldDESScore.setWrapStyleWord(true);
         if(jComboBoxDES.getSelectedItem().equals("Szyfracja")){
             score = DES.takeIn(text, key);
             jTextFieldDESScore.setText(score);
@@ -954,10 +938,11 @@ public class MainForm extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField jTextFieldDESKey;
-    private javax.swing.JTextField jTextFieldDESScore;
+    private javax.swing.JTextArea jTextFieldDESScore;
     private javax.swing.JTextField jTextFieldStreamWord;
     private javax.swing.JTextField jTextFieldTextDES;
     private javax.swing.JTextField jTextFieldWord2;
