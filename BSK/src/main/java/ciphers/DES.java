@@ -265,22 +265,22 @@ public class DES {
         return Arrays.asList(results);
     }
 
-    public static String takeIn(String text) {
+    public static String takeIn(String text,String key) {
         List<String> strings = splitToEncode(text);
         String out = "";
         for ( String string : strings) {
              String str = convertStringToBinary(string);
-             String encoded = encode(str,"KEY");
+             String encoded = encode(str,key);
              out += encoded;
         }
         return out;
     }
 
-    public static String takeOut(String text) {
+    public static String takeOut(String text, String key) {
         List<String> strings = splitToDecode(text);
         String out = "";
         for (String string : strings) {
-            String decoded = decode(string, "KEY");
+            String decoded = decode(string,key);
             String str = convertBytesIntoString(decoded);
             if ( strings.indexOf(string) == strings.size() - 1) {
                 if ( str.equals("0000000~"))

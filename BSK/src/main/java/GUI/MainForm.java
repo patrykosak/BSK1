@@ -98,17 +98,14 @@ public class MainForm extends javax.swing.JFrame {
         jButtonStop = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jComboBoxDES = new javax.swing.JComboBox<>();
+        jTextFieldDESScore = new javax.swing.JTextField();
+        keyDES = new javax.swing.JLabel();
+        jTextFieldTextDES = new javax.swing.JTextField();
+        szyfruj = new javax.swing.JButton();
+        keyDES1 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
-        jLabel24 = new javax.swing.JLabel();
-        JWordTextFieldPolynomialDES = new javax.swing.JTextField();
-        JWordTextFieldSeedDES = new javax.swing.JTextField();
-        jTextFieldDESMessage = new javax.swing.JTextField();
-        keyDES = new javax.swing.JLabel();
-        jTextFieldKeyDES = new javax.swing.JTextField();
-        jButtonGenerateKeyDES = new javax.swing.JButton();
-        jButtonGenerateDES = new javax.swing.JButton();
-        jTextFieldGeneratedDES = new javax.swing.JTextField();
+        jTextFieldDESKey = new javax.swing.JTextField();
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
@@ -549,55 +546,37 @@ public class MainForm extends javax.swing.JFrame {
             }
         });
 
-        jLabel17.setText("Generator Klucza");
-
-        jLabel19.setText("Wielomian");
-
-        jLabel24.setText("Ziarno");
-
-        JWordTextFieldPolynomialDES.addActionListener(new java.awt.event.ActionListener() {
+        jTextFieldDESScore.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                JWordTextFieldPolynomialDESActionPerformed(evt);
+                jTextFieldDESScoreActionPerformed(evt);
             }
         });
 
-        JWordTextFieldSeedDES.addActionListener(new java.awt.event.ActionListener() {
+        keyDES.setText("Tekst");
+
+        jTextFieldTextDES.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                JWordTextFieldSeedDESActionPerformed(evt);
+                jTextFieldTextDESActionPerformed(evt);
             }
         });
 
-        jTextFieldDESMessage.addActionListener(new java.awt.event.ActionListener() {
+        szyfruj.setText("Sprawdź wynik");
+        szyfruj.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldDESMessageActionPerformed(evt);
+                szyfrujActionPerformed(evt);
             }
         });
 
-        keyDES.setText("Wielomian");
+        keyDES1.setText("Klucz (w postaci Hexagonalnej)");
 
-        jTextFieldKeyDES.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldKeyDESActionPerformed(evt);
-            }
-        });
+        jLabel17.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel17.setText("DES");
 
-        jButtonGenerateKeyDES.setText("Generuj");
-        jButtonGenerateKeyDES.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonGenerateKeyDESActionPerformed(evt);
-            }
-        });
+        jLabel19.setText("Wynik");
 
-        jButtonGenerateDES.setText("Generuj");
-        jButtonGenerateDES.addActionListener(new java.awt.event.ActionListener() {
+        jTextFieldDESKey.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonGenerateDESActionPerformed(evt);
-            }
-        });
-
-        jTextFieldGeneratedDES.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextFieldGeneratedDESActionPerformed(evt);
+                jTextFieldDESKeyActionPerformed(evt);
             }
         });
 
@@ -609,59 +588,60 @@ public class MainForm extends javax.swing.JFrame {
                 .addGap(21, 21, 21)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel19, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(231, 231, 231)
-                        .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 165, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(261, 261, 261))
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jComboBoxDES, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(keyDES1, javax.swing.GroupLayout.PREFERRED_SIZE, 732, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(keyDES, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addContainerGap())
+                        .addComponent(jLabel17)
+                        .addGap(0, 0, Short.MAX_VALUE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jButtonGenerateKeyDES, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 694, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(szyfruj, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(keyDES, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addGroup(jPanel3Layout.createSequentialGroup()
-                                .addComponent(JWordTextFieldPolynomialDES, javax.swing.GroupLayout.PREFERRED_SIZE, 357, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(JWordTextFieldSeedDES, javax.swing.GroupLayout.PREFERRED_SIZE, 357, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                            .addComponent(jTextFieldKeyDES, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel17, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jComboBoxDES, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextFieldDESMessage, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextFieldGeneratedDES, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 732, Short.MAX_VALUE)
-                            .addComponent(jButtonGenerateDES, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                                .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 93, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addContainerGap())))
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jTextFieldTextDES, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jTextFieldDESScore))
+                .addContainerGap())
+            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel3Layout.createSequentialGroup()
+                    .addGap(11, 11, 11)
+                    .addComponent(jTextFieldDESKey, javax.swing.GroupLayout.DEFAULT_SIZE, 828, Short.MAX_VALUE)
+                    .addContainerGap()))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(15, 15, 15)
-                .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap()
+                .addComponent(jLabel17)
+                .addGap(18, 18, 18)
+                .addComponent(jComboBoxDES, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel24, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(JWordTextFieldPolynomialDES, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(JWordTextFieldSeedDES, javax.swing.GroupLayout.PREFERRED_SIZE, 46, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(10, 10, 10)
-                .addComponent(jButtonGenerateKeyDES, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(keyDES, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jTextFieldKeyDES, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(23, 23, 23)
-                .addComponent(jComboBoxDES, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(26, 26, 26)
-                .addComponent(jTextFieldDESMessage, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jTextFieldTextDES, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButtonGenerateDES, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jTextFieldGeneratedDES, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(144, Short.MAX_VALUE))
+                .addComponent(keyDES1, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(69, 69, 69)
+                .addComponent(jLabel19)
+                .addGap(18, 18, 18)
+                .addComponent(jTextFieldDESScore, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(33, 33, 33)
+                .addComponent(szyfruj, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(206, Short.MAX_VALUE))
+            .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel3Layout.createSequentialGroup()
+                    .addGap(247, 247, 247)
+                    .addComponent(jTextFieldDESKey, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(357, Short.MAX_VALUE)))
         );
 
         jTabbedPane1.addTab("DES", jPanel3);
@@ -674,7 +654,7 @@ public class MainForm extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1)
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.Alignment.TRAILING)
         );
 
         pack();
@@ -856,57 +836,36 @@ public class MainForm extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_JTypeComboBoxActionPerformed
 
-    private void JWordTextFieldSeedDESActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JWordTextFieldSeedDESActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_JWordTextFieldSeedDESActionPerformed
-
-    private void JWordTextFieldPolynomialDESActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JWordTextFieldPolynomialDESActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_JWordTextFieldPolynomialDESActionPerformed
-
     private void jComboBoxDESActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxDESActionPerformed
 
     }//GEN-LAST:event_jComboBoxDESActionPerformed
 
-    private void jTextFieldDESMessageActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldDESMessageActionPerformed
+    private void jTextFieldDESScoreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldDESScoreActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldDESMessageActionPerformed
+    }//GEN-LAST:event_jTextFieldDESScoreActionPerformed
 
-    private void jTextFieldKeyDESActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldKeyDESActionPerformed
+    private void jTextFieldTextDESActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldTextDESActionPerformed
         
-    }//GEN-LAST:event_jTextFieldKeyDESActionPerformed
+    }//GEN-LAST:event_jTextFieldTextDESActionPerformed
 
-    private void jButtonGenerateKeyDESActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGenerateKeyDESActionPerformed
-        String polynomialDES = JWordTextFieldPolynomialDES.getText();
-        Boolean[] boolsPolynomialDES = polynomialDES.chars().mapToObj((c) -> (char)c == '1').toArray(Boolean[]::new);
-        String seedDES = JWordTextFieldSeedDES.getText();
-        Boolean[] boolsSeedDES = seedDES.chars().mapToObj((c) -> (char)c == '1').toArray(Boolean[]::new);
-        Boolean[] score = LFSRGenerator.generate(boolsPolynomialDES, boolsSeedDES, 64);
-        StringBuilder builder = new StringBuilder();
-            for(int i = 0; i < score.length; i++) {
-                if (score[i]) builder.append("1"); else builder.append("0");
-            }
-        jTextFieldKeyDES.setText(builder.toString());
-    }//GEN-LAST:event_jButtonGenerateKeyDESActionPerformed
-
-    private void jTextFieldGeneratedDESActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldGeneratedDESActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldGeneratedDESActionPerformed
-
-    private void jButtonGenerateDESActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGenerateDESActionPerformed
-        String word = jTextFieldDESMessage.getText();
-        String key = jTextFieldKeyDES.getText();
+    private void szyfrujActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_szyfrujActionPerformed
+        String key = jTextFieldDESKey.getText();
+        String text = jTextFieldTextDES.getText();
         String score;
         if(jComboBoxDES.getSelectedItem().equals("Szyfracja")){
-            score = DES.encode(word, key);
-            jTextFieldGeneratedDES.setText(score);
+            score = DES.takeIn(text, key);
+            jTextFieldDESScore.setText(score);
         }else{
-            score = DES.decode(word, key);
-            jTextFieldGeneratedDES.setText(score);
+            score = DES.takeOut(text, key);
+            jTextFieldDESScore.setText(score);
         }
         
         
-    }//GEN-LAST:event_jButtonGenerateDESActionPerformed
+    }//GEN-LAST:event_szyfrujActionPerformed
+
+    private void jTextFieldDESKeyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldDESKeyActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldDESKeyActionPerformed
 
     /**
      * @param args the command line arguments
@@ -957,16 +916,12 @@ public class MainForm extends javax.swing.JFrame {
     private javax.swing.JTextField JWordTextField;
     private javax.swing.JTextField JWordTextFieldGeneratorScore;
     private javax.swing.JTextField JWordTextFieldPolynomial;
-    private javax.swing.JTextField JWordTextFieldPolynomialDES;
-    private javax.swing.JTextField JWordTextFieldSeedDES;
     private javax.swing.JTextField JWordTextFieldStreamPolynomial;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButtonGenerate;
-    private javax.swing.JButton jButtonGenerateDES;
-    private javax.swing.JButton jButtonGenerateKeyDES;
     private javax.swing.JButton jButtonStop;
     private javax.swing.JComboBox<String> jComboBoxDES;
     private javax.swing.JComboBox<String> jComboBoxStreamCipher;
@@ -988,7 +943,6 @@ public class MainForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
-    private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -1002,12 +956,14 @@ public class MainForm extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTextArea jTextArea1;
-    private javax.swing.JTextField jTextFieldDESMessage;
-    private javax.swing.JTextField jTextFieldGeneratedDES;
-    private javax.swing.JTextField jTextFieldKeyDES;
+    private javax.swing.JTextField jTextFieldDESKey;
+    private javax.swing.JTextField jTextFieldDESScore;
     private javax.swing.JTextField jTextFieldStreamWord;
+    private javax.swing.JTextField jTextFieldTextDES;
     private javax.swing.JTextField jTextFieldWord2;
     private javax.swing.JTextField jTextFieldWord4;
     private javax.swing.JLabel keyDES;
+    private javax.swing.JLabel keyDES1;
+    private javax.swing.JButton szyfruj;
     // End of variables declaration//GEN-END:variables
 }
