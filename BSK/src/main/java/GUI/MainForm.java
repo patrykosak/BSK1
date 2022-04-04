@@ -108,6 +108,16 @@ public class MainForm extends javax.swing.JFrame {
         jTextFieldDESKey = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
         jTextFieldDESScore = new javax.swing.JTextArea();
+        jPanel4 = new javax.swing.JPanel();
+        jComboBoxDESFIles = new javax.swing.JComboBox<>();
+        keyDES2 = new javax.swing.JLabel();
+        jTextFieldTextInFilePath = new javax.swing.JTextField();
+        JButtonGenerateFile = new javax.swing.JButton();
+        keyDES3 = new javax.swing.JLabel();
+        jLabel24 = new javax.swing.JLabel();
+        jLabel25 = new javax.swing.JLabel();
+        jTextFieldDESKey1 = new javax.swing.JTextField();
+        jTextFieldOutputFileName = new javax.swing.JTextField();
 
         jTextArea1.setColumns(20);
         jTextArea1.setRows(5);
@@ -633,6 +643,100 @@ public class MainForm extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("DES", jPanel3);
 
+        jComboBoxDESFIles.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Szyfracja", "Deszyfracja" }));
+        jComboBoxDESFIles.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxDESFIlesActionPerformed(evt);
+            }
+        });
+
+        keyDES2.setText("Ścieżka pliku wejściowego");
+
+        jTextFieldTextInFilePath.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldTextInFilePathActionPerformed(evt);
+            }
+        });
+
+        JButtonGenerateFile.setText("Generuj");
+        JButtonGenerateFile.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                JButtonGenerateFileActionPerformed(evt);
+            }
+        });
+
+        keyDES3.setText("Klucz");
+
+        jLabel24.setFont(new java.awt.Font("Tahoma", 0, 24)); // NOI18N
+        jLabel24.setText("DES Files");
+
+        jLabel25.setText("Nazwa pliku wyjściowego");
+
+        jTextFieldDESKey1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldDESKey1ActionPerformed(evt);
+            }
+        });
+
+        jTextFieldOutputFileName.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextFieldOutputFileNameActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(21, 21, 21)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jComboBoxDESFIles, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(keyDES3, javax.swing.GroupLayout.PREFERRED_SIZE, 732, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel24))
+                        .addGap(0, 96, Short.MAX_VALUE))
+                    .addGroup(jPanel4Layout.createSequentialGroup()
+                        .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jTextFieldOutputFileName, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jTextFieldDESKey1, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jTextFieldTextInFilePath)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                                .addGap(0, 0, Short.MAX_VALUE)
+                                .addComponent(JButtonGenerateFile, javax.swing.GroupLayout.PREFERRED_SIZE, 124, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(keyDES2, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addGroup(jPanel4Layout.createSequentialGroup()
+                                .addComponent(jLabel25)
+                                .addGap(0, 0, Short.MAX_VALUE)))
+                        .addContainerGap())))
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel24)
+                .addGap(11, 11, 11)
+                .addComponent(jComboBoxDESFIles, javax.swing.GroupLayout.PREFERRED_SIZE, 41, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(13, 13, 13)
+                .addComponent(keyDES2, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jTextFieldTextInFilePath, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(keyDES3, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jTextFieldDESKey1, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel25)
+                .addGap(18, 18, 18)
+                .addComponent(jTextFieldOutputFileName, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(JButtonGenerateFile, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(221, Short.MAX_VALUE))
+        );
+
+        jTabbedPane1.addTab("DES Files", jPanel4);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -646,6 +750,67 @@ public class MainForm extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jTextFieldDESKey1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldDESKey1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldDESKey1ActionPerformed
+
+    private void JButtonGenerateFileActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JButtonGenerateFileActionPerformed
+        String filePath = jTextFieldTextInFilePath.getText();
+        String key = jTextFieldDESKey1.getText();
+        String outputName = jTextFieldOutputFileName.getText();
+
+        if(jComboBoxDESFIles.getSelectedItem().equals("Szyfracja")){
+            try {
+                DES.encodeFromfile(filePath, key,outputName);
+            } catch (IOException ex) {
+                Logger.getLogger(MainForm.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }else{
+            try {
+                DES.decodeFromfile(filePath, key,outputName);
+            } catch (IOException ex) {
+                Logger.getLogger(MainForm.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+     
+    }//GEN-LAST:event_JButtonGenerateFileActionPerformed
+
+    private void jTextFieldTextInFilePathActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldTextInFilePathActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldTextInFilePathActionPerformed
+
+    private void jComboBoxDESFIlesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxDESFIlesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBoxDESFIlesActionPerformed
+
+    private void jTextFieldDESKeyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldDESKeyActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextFieldDESKeyActionPerformed
+
+    private void szyfrujActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_szyfrujActionPerformed
+        String key = jTextFieldDESKey.getText();
+        String text = jTextFieldTextDES.getText();
+        String score;
+        jTextFieldDESScore.setLineWrap(true);
+        jTextFieldDESScore.setWrapStyleWord(true);
+        if(jComboBoxDES.getSelectedItem().equals("Szyfracja")){
+            score = DES.takeIn(text, key);
+            jTextFieldDESScore.setText(score);
+        }else{
+            score = DES.takeOut(text, key);
+            jTextFieldDESScore.setText(score);
+        }
+
+    }//GEN-LAST:event_szyfrujActionPerformed
+
+    private void jTextFieldTextDESActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldTextDESActionPerformed
+
+    }//GEN-LAST:event_jTextFieldTextDESActionPerformed
+
+    private void jComboBoxDESActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxDESActionPerformed
+
+    }//GEN-LAST:event_jComboBoxDESActionPerformed
 
     private void jButtonStopActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonStopActionPerformed
         ifGenerate=false;
@@ -816,46 +981,15 @@ public class MainForm extends javax.swing.JFrame {
 
     private void JWordTextFieldActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JWordTextFieldActionPerformed
         // TODO add your handling code here:
-
     }//GEN-LAST:event_JWordTextFieldActionPerformed
 
     private void JTypeComboBoxActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_JTypeComboBoxActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_JTypeComboBoxActionPerformed
 
-    private void jComboBoxDESActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxDESActionPerformed
-
-    }//GEN-LAST:event_jComboBoxDESActionPerformed
-
-    private void jTextFieldTextDESActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldTextDESActionPerformed
-        
-    }//GEN-LAST:event_jTextFieldTextDESActionPerformed
-
-    private void szyfrujActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_szyfrujActionPerformed
-        String key = jTextFieldDESKey.getText();
-        String text = jTextFieldTextDES.getText();
-        try {
-            DES.decodeFromfile();
-        } catch (IOException ex) {
-            Logger.getLogger(MainForm.class.getName()).log(Level.SEVERE, null, ex);
-        }
-        String score;
-        jTextFieldDESScore.setLineWrap(true);
-        jTextFieldDESScore.setWrapStyleWord(true);
-        if(jComboBoxDES.getSelectedItem().equals("Szyfracja")){
-            score = DES.takeIn(text, key);
-            jTextFieldDESScore.setText(score);
-        }else{
-            score = DES.takeOut(text, key);
-            jTextFieldDESScore.setText(score);
-        }
-        
-        
-    }//GEN-LAST:event_szyfrujActionPerformed
-
-    private void jTextFieldDESKeyActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldDESKeyActionPerformed
+    private void jTextFieldOutputFileNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldOutputFileNameActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextFieldDESKeyActionPerformed
+    }//GEN-LAST:event_jTextFieldOutputFileNameActionPerformed
 
     /**
      * @param args the command line arguments
@@ -893,6 +1027,7 @@ public class MainForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton JButtonGenerateFile;
     private javax.swing.JTextField JRailFenceNTextField;
     private javax.swing.JTextField JRailFenceScoreTextField;
     private javax.swing.JTextField JStreamScoreTextField;
@@ -914,6 +1049,7 @@ public class MainForm extends javax.swing.JFrame {
     private javax.swing.JButton jButtonGenerate;
     private javax.swing.JButton jButtonStop;
     private javax.swing.JComboBox<String> jComboBoxDES;
+    private javax.swing.JComboBox<String> jComboBoxDESFIles;
     private javax.swing.JComboBox<String> jComboBoxStreamCipher;
     private javax.swing.JComboBox<String> jComboBoxTranspositionA;
     private javax.swing.JComboBox<String> jComboBoxTranspositionB;
@@ -933,6 +1069,8 @@ public class MainForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel21;
     private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
+    private javax.swing.JLabel jLabel24;
+    private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -943,18 +1081,24 @@ public class MainForm extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTextArea jTextArea1;
     private javax.swing.JTextField jTextFieldDESKey;
+    private javax.swing.JTextField jTextFieldDESKey1;
     private javax.swing.JTextArea jTextFieldDESScore;
+    private javax.swing.JTextField jTextFieldOutputFileName;
     private javax.swing.JTextField jTextFieldStreamWord;
     private javax.swing.JTextField jTextFieldTextDES;
+    private javax.swing.JTextField jTextFieldTextInFilePath;
     private javax.swing.JTextField jTextFieldWord2;
     private javax.swing.JTextField jTextFieldWord4;
     private javax.swing.JLabel keyDES;
     private javax.swing.JLabel keyDES1;
+    private javax.swing.JLabel keyDES2;
+    private javax.swing.JLabel keyDES3;
     private javax.swing.JButton szyfruj;
     // End of variables declaration//GEN-END:variables
 }

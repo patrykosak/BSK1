@@ -319,20 +319,20 @@ public class DES {
 }
     
         
-    public static void encodeFromfile() throws FileNotFoundException, IOException {
-   FileInputStream fileInputStream = new FileInputStream("C:\\Users\\xxx\\Downloads\\test.bin");
+    public static void encodeFromfile(String filePath, String key, String outputName) throws FileNotFoundException, IOException {
+   FileInputStream fileInputStream = new FileInputStream(filePath);
    String content = getFileContent(fileInputStream);
-        String returned = takeIn(content, "0010111111000011100010000110010101111001101001100110001010010110");
-        BufferedWriter writer = new BufferedWriter(new FileWriter("C:\\Users\\xxx\\Downloads\\tested.bin"));
+        String returned = takeIn(content, key);
+        BufferedWriter writer = new BufferedWriter(new FileWriter("C:\\Users\\xxx\\Desktop\\DES\\"+outputName+".bin"));
         writer.write(returned);
         writer.close();
     }
     
-        public static void decodeFromfile() throws FileNotFoundException, IOException {
-        FileInputStream fileInputStream = new FileInputStream("C:\\Users\\xxx\\Downloads\\tested.bin");
+        public static void decodeFromfile(String filePath, String key, String outputName) throws FileNotFoundException, IOException {
+        FileInputStream fileInputStream = new FileInputStream(filePath);
         String content = getFileContent(fileInputStream);
-        String returned = takeOut(content, "0010111111000011100010000110010101111001101001100110001010010110");
-        BufferedWriter writer = new BufferedWriter(new FileWriter("C:\\Users\\xxx\\Downloads\\test2.bin"));
+        String returned = takeOut(content, key);
+        BufferedWriter writer = new BufferedWriter(new FileWriter("C:\\Users\\xxx\\Desktop\\DES\\"+outputName+".bin"));
         writer.write(returned);
         writer.close();
     }
