@@ -14,6 +14,7 @@ import ciphers.TranspositionMatrixA;
 import ciphers.TranspositionMatrixB;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.util.Arrays;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Level;
@@ -833,6 +834,11 @@ public class MainForm extends javax.swing.JFrame {
     private void szyfrujActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_szyfrujActionPerformed
         String key = jTextFieldDESKey.getText();
         String text = jTextFieldTextDES.getText();
+        try {
+            DES.decodeFromfile();
+        } catch (IOException ex) {
+            Logger.getLogger(MainForm.class.getName()).log(Level.SEVERE, null, ex);
+        }
         String score;
         jTextFieldDESScore.setLineWrap(true);
         jTextFieldDESScore.setWrapStyleWord(true);

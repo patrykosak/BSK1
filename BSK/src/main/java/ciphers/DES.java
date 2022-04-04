@@ -5,6 +5,16 @@
  */
 package ciphers;
 
+import java.io.BufferedOutputStream;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -292,5 +302,38 @@ public class DES {
             out += str;
         }
         return out;
+    }
+    
+    
+    public static String getFileContent(FileInputStream fis ) throws IOException {
+   try( BufferedReader br =
+           new BufferedReader( new InputStreamReader(fis )))
+   {
+      StringBuilder sb = new StringBuilder();
+      String line;
+      while(( line = br.readLine()) != null ) {
+         sb.append( line );
+      }
+      return sb.toString();
+   }
+}
+    
+        
+    public static void encodeFromfile() throws FileNotFoundException, IOException {
+   FileInputStream fileInputStream = new FileInputStream("C:\\Users\\xxx\\Downloads\\test.bin");
+   String content = getFileContent(fileInputStream);
+        String returned = takeIn(content, "0010111111000011100010000110010101111001101001100110001010010110");
+        BufferedWriter writer = new BufferedWriter(new FileWriter("C:\\Users\\xxx\\Downloads\\tested.bin"));
+        writer.write(returned);
+        writer.close();
+    }
+    
+        public static void decodeFromfile() throws FileNotFoundException, IOException {
+        FileInputStream fileInputStream = new FileInputStream("C:\\Users\\xxx\\Downloads\\tested.bin");
+        String content = getFileContent(fileInputStream);
+        String returned = takeOut(content, "0010111111000011100010000110010101111001101001100110001010010110");
+        BufferedWriter writer = new BufferedWriter(new FileWriter("C:\\Users\\xxx\\Downloads\\test2.bin"));
+        writer.write(returned);
+        writer.close();
     }
 }
